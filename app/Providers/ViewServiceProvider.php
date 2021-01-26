@@ -1,0 +1,100 @@
+<?php
+
+namespace App\Providers;
+use App\Models\Establishment;
+use App\Models\Category;
+use Spatie\Permission\Models\Permission;
+
+use Illuminate\Support\ServiceProvider;
+use View;
+
+class ViewServiceProvider extends ServiceProvider
+{
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        View::composer(['resources.fields'], function ($view) {
+            $establishmentItems = Establishment::pluck('name','id')->toArray();
+            $view->with('establishmentItems', $establishmentItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['categories.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['categories.table'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['categories.show_fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
+        View::composer(['roles.fields'], function ($view) {
+            $permissionItems = Permission::pluck('name','id')->toArray();
+            $view->with('permissionItems', $permissionItems);
+        });
+        View::composer(['roles.fields'], function ($view) {
+            $permissionItems = Permission::pluck('name','id')->toArray();
+            $view->with('permissionItems', $permissionItems);
+        });
+        //
+    }
+}
