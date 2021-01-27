@@ -70,3 +70,27 @@
         <span>Sessions</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('schedules*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('schedules.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Schedules</span>
+    </a>
+</li>
+<li class="nav-item {{ Request::is('relationResourceSessions*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('relationResourceSessions.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Relation Resource Sessions</span>
+    </a>
+</li>
+<li class="nav-item {{ Request::is('statusTurnos*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('statusTurnos.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Status Turnos</span>
+    </a>
+</li>
+<li class="nav-item {{ Request::is('turnos*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('turnos.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Turnos</span>
+    </a>
+</li>

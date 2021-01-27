@@ -76,3 +76,11 @@ Route::resource('resources', App\Http\Controllers\API\ResourceAPIController::cla
 
 
 Route::resource('sessions', App\Http\Controllers\API\SessionAPIController::class);
+
+Route::resource('schedules', App\Http\Controllers\API\ScheduleAPIController::class);
+
+Route::resource('relation_resource_sessions', App\Http\Controllers\API\RelationResourceSessionAPIController::class);
+
+Route::resource('status_turnos', App\Http\Controllers\API\StatusTurnoAPIController::class);
+
+Route::resource('turnos', App\Http\Controllers\API\TurnoAPIController::class);
