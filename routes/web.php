@@ -73,3 +73,29 @@ Route::resource('categories', App\Http\Controllers\CategoryController::class);
 Route::resource('establishments', App\Http\Controllers\EstablishmentController::class);
 
 Route::resource('resources', App\Http\Controllers\ResourceController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('sessions', App\Http\Controllers\SessionController::class);

@@ -50,3 +50,29 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('establishments', App\Http\Controllers\API\EstablishmentAPIController::class);
 
 Route::resource('resources', App\Http\Controllers\API\ResourceAPIController::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::resource('sessions', App\Http\Controllers\API\SessionAPIController::class);

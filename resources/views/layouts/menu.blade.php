@@ -52,3 +52,21 @@
         <span>Resources</span>
     </a>
 </li>
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="nav-item {{ Request::is('sessions*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('sessions.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Sessions</span>
+    </a>
+</li>
