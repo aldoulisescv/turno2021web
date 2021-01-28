@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('establishments.index') !!}">Establishment</a>
+             <a href="{!! route('establishments.index') !!}">@lang('models/establishments.singular')</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">@lang('crud.edit')</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Establishment</strong>
+                              <strong>Edit @lang('models/establishments.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($establishment, ['route' => ['establishments.update', $establishment->id], 'method' => 'patch']) !!}

@@ -32,6 +32,10 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['establishments.fields'], function ($view) {
+            $categoryItems = Category::pluck('name','id')->toArray();
+            $view->with('categoryItems', $categoryItems);
+        });
         View::composer(['users.fields'], function ($view) {
             $establishmentItems = Establishment::pluck('name','id')->toArray();
             $view->with('establishmentItems', $establishmentItems);

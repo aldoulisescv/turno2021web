@@ -20,30 +20,16 @@
 </li>
 
 
-
-
-
-
-
-
-
-
-
-
 <li class="nav-item {{ Request::is('categories*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('categories.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Categories</span>
+        <span>@lang('models/categories.plural')</span>
     </a>
 </li>
-
-
-
-
 <li class="nav-item {{ Request::is('establishments*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('establishments.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Establishments</span>
+        <span>@lang('models/establishments.plural')</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('resources*') ? 'active' : '' }}">
