@@ -4,9 +4,10 @@ return [
 
     'add_new'      => 'Add New',
     'cancel'       => 'Cancel',
+    'create'       => 'Create ',
     'save'         => 'Save',
-    'edit'         => 'Edit',
-    'detail'       => 'Detail',
+    'edit'         => 'Edit ',
+    'detail'       => 'Detail ',
     'back'         => 'Back',
     'action'       => 'Action',
     'id'           => 'Id',

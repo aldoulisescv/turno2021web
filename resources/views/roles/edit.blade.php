@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit @lang('models/roles.singular')</strong>
+                              <strong>@lang('crud.edit') @lang('models/roles.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($role, ['route' => ['roles.update', $role->id], 'method' => 'patch']) !!}

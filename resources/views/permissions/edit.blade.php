@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit @lang('models/permissions.singular')</strong>
+                              <strong>@lang('crud.edit') @lang('models/permissions.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($permission, ['route' => ['permissions.update', $permission->id], 'method' => 'patch']) !!}

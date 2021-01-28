@@ -35,48 +35,36 @@
 <li class="nav-item {{ Request::is('resources*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('resources.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Resources</span>
+        <span>@lang('models/resources.plural')</span>
     </a>
 </li>
-
-
-
-
-
-
-
-
-
-
-
-
 <li class="nav-item {{ Request::is('sessions*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('sessions.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Sessions</span>
+        <span>@lang('models/sessions.plural')</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('schedules*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('schedules.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Schedules</span>
+        <span>@lang('models/schedules.plural')</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('relationResourceSessions*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('relationResourceSessions.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Relation Resource Sessions</span>
+        <span>@lang('models/relationResourceSessions.plural')</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('statusTurnos*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('statusTurnos.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Status Turnos</span>
+        <span>@lang('models/statusTurnos.plural')</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('turnos*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('turnos.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>Turnos</span>
+        <span>@lang('models/turnos.plural')</span>
     </a>
 </li>

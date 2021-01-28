@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit @lang('models/statusTurnos.singular')</strong>
+                              <strong>@lang('crud.edit') @lang('models/statusTurnos.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($statusTurno, ['route' => ['statusTurnos.update', $statusTurno->id], 'method' => 'patch']) !!}

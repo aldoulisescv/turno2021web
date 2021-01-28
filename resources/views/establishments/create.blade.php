@@ -15,7 +15,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Create @lang('models/establishments.singular')</strong>
+                                <strong>@lang('crud.create')@lang('models/establishments.singular')</strong>
                             </div>
                             <div class="card-body">
                                 {!! Form::open(['route' => 'establishments.store']) !!}

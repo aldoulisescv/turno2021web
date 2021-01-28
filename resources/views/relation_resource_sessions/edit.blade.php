@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit @lang('models/relationResourceSessions.singular')</strong>
+                              <strong>@lang('crud.edit') @lang('models/relationResourceSessions.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($relationResourceSession, ['route' => ['relationResourceSessions.update', $relationResourceSession->id], 'method' => 'patch']) !!}
