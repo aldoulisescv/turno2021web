@@ -25,8 +25,8 @@
     },
     {
         "name": "establishment_id",
-        "dbType": "integer",
-        "htmlType": "selectTable:establishment:name,id",
+        "dbType": "integer:unsigned:foreign,establishments,id",
+        "htmlType": "selectTable:establishments:name,id",
         "validations": "required",
         "searchable": true,
         "fillable": true,
@@ -37,7 +37,7 @@
     },
     {
         "name": "resource_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,resources,id",
         "htmlType": "selectTable:resources:name,id",
         "validations": "required",
         "searchable": true,
@@ -49,7 +49,7 @@
     },
     {
         "name": "session_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,sessions,id",
         "htmlType": "selectTable:sessions:name,id",
         "validations": "required",
         "searchable": true,
@@ -61,7 +61,7 @@
     },
     {
         "name": "status_turno_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,status_tunos,id",
         "htmlType": "selectTable:status_turnos:name,id",
         "validations": "required",
         "searchable": true,

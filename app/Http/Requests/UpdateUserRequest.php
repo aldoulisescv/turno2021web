@@ -28,7 +28,9 @@ class UpdateUserRequest extends FormRequest
         $rules = [
           'name'     => 'required',
           'email'    => 'required|email|unique:users,email,'.$id,
-          'password' => 'confirmed'
+          'password' => 'confirmed',
+          'user_name'    => 'required|unique:users,user_name,'.$id,
+          'phone'    => 'required|unique:users,phone,'.$id,
         ];
         
         return $rules;

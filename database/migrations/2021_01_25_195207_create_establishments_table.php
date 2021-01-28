@@ -17,8 +17,8 @@ class CreateEstablishmentsTable extends Migration
         Schema::create('establishments', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('enabled')->default(true);
-            $table->integer('category_id');
-            $table->integer('subcategory_id');
+            $table->integer('category_id')->unsigned();
+            $table->integer('subcategory_id')->unsigned();
             $table->string('name');
             $table->string('logo');
             $table->integer('stepping');
@@ -39,6 +39,8 @@ class CreateEstablishmentsTable extends Migration
             $table->boolean('help_tooltip')->default(true);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('subcategory_id')->references('id')->on('categories');
         });
     }
 

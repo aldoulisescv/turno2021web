@@ -17,16 +17,22 @@ class CreateTurnosTable extends Migration
         Schema::create('turnos', function (Blueprint $table) {
             $table->increments('id');
             $table->biginteger('user_id')->unsigned();
-            $table->integer('establishment_id');
-            $table->integer('resource_id');
-            $table->integer('session_id');
-            $table->integer('status_turno_id');
+            $table->integer('establishment_id')->unsigned();
+            $table->integer('resource_id')->unsigned();
+            $table->integer('session_id')->unsigned();
+            $table->integer('status_turno_id')->unsigned();
             $table->date('date');
             $table->time('start_time');
             $table->time('end_time');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('establishment_id')->references('id')->on('establishments');
+            $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreign('resource_id')->references('id')->on('resources');            
+            $table->foreign('status_turno_id')->references('id')->on('status_turnos');
+
+
         });
     }
 

@@ -54,10 +54,11 @@ class UserController extends AppBaseController
      */
     public function store(CreateUserRequest $request)
     {
+        // dd($request);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
-
+        $user->assignRole($request->role);
         Flash::success('User saved successfully.');
 
         return redirect(route('users.index'));
@@ -127,7 +128,8 @@ class UserController extends AppBaseController
             unset($input['password']);
         }
         $user = $this->userRepository->update($input, $id);
-
+        $user->roles()->detach();
+        $user->assignRole($request->role);
         Flash::success('User updated successfully.');
 
         return redirect(route('users.index'));

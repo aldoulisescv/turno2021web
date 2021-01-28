@@ -17,7 +17,7 @@ class CreateSessionsTable extends Migration
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('enabled')->default(true);
-            $table->integer('establishment_id');
+            $table->integer('establishment_id')->unsigned();
             $table->string('name');
             $table->string('duration');
             $table->float('cost');
@@ -31,7 +31,10 @@ class CreateSessionsTable extends Migration
             $table->time('time_btwn_session');
             $table->date('end_date')->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes();            
+            $table->foreign('establishment_id')->references('id')->on('establishments');
+
+            
         });
     }
 

@@ -25,7 +25,7 @@
     },
     {
         "name": "resource_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,resources,id",
         "htmlType": "selectTable:resources:name,id",
         "validations": "required",
         "searchable": true,

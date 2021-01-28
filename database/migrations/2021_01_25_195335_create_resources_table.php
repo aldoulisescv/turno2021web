@@ -17,12 +17,13 @@ class CreateResourcesTable extends Migration
         Schema::create('resources', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('enabled')->default(true);
-            $table->integer('establishment_id');
+            $table->integer('establishment_id')->unsigned();
             $table->string('name');
             $table->boolean('selectable')->default(true);
             $table->boolean('order_alpha')->default(true);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('establishment_id')->references('id')->on('establishments');
         });
     }
 

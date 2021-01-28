@@ -17,18 +17,20 @@ class CreateSchedulesTable extends Migration
         Schema::create('schedules', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('enabled')->default(true);
-            $table->integer('resource_id');
+            $table->integer('resource_id')->unsigned();
             $table->time('start_hour');
             $table->time('end_hour');
-            $table->boolean('sunday')->default(true);
-            $table->boolean('monday')->default(true);
-            $table->boolean('tuesday')->default(true);
-            $table->boolean('wednesday')->default(true);
-            $table->boolean('thrusday')->default(true);
-            $table->boolean('friday')->default(true);
-            $table->boolean('saturday')->default(true);
+            $table->boolean('sunday')->default(false);
+            $table->boolean('monday')->default(false);
+            $table->boolean('tuesday')->default(false);
+            $table->boolean('wednesday')->default(false);
+            $table->boolean('thrusday')->default(false);
+            $table->boolean('friday')->default(false);
+            $table->boolean('saturday')->default(false);
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('resource_id')->references('id')->on('resources');
+
         });
     }
 

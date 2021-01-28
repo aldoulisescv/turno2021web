@@ -8,6 +8,7 @@ use App\Models\Resource;
 use App\Models\Establishment;
 use App\Models\Category;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 use Illuminate\Support\ServiceProvider;
 use View;
@@ -31,6 +32,14 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['users.fields'], function ($view) {
+            $establishmentItems = Establishment::pluck('name','id')->toArray();
+            $view->with('establishmentItems', $establishmentItems);
+        });
+        View::composer(['users.fields'], function ($view) {
+            $roleItems = Role::pluck('name','name')->toArray();
+            $view->with('roleItems', $roleItems);
+        });
         View::composer(['turnos.fields'], function ($view) {
             $status_turnoItems = StatusTurno::pluck('name','id')->toArray();
             $view->with('status_turnoItems', $status_turnoItems);
@@ -71,46 +80,6 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['resources.fields'], function ($view) {
             $establishmentItems = Establishment::pluck('name','id')->toArray();
             $view->with('establishmentItems', $establishmentItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
-        });
-        View::composer(['establishments.fields'], function ($view) {
-            $categoryItems = Category::pluck('name','id')->toArray();
-            $view->with('categoryItems', $categoryItems);
         });
         View::composer(['establishments.fields'], function ($view) {
             $categoryItems = Category::pluck('name','id')->toArray();

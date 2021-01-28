@@ -25,7 +25,7 @@
     },
     {
         "name": "category_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,categories,id",
         "htmlType": "selectTable:categories:name,id",
         "validations": "required",
         "searchable": true,
@@ -37,7 +37,7 @@
     },
     {
         "name": "subcategory_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,categories,id",
         "htmlType": "selectTable:categories:name,id",
         "validations": "",
         "searchable": true,

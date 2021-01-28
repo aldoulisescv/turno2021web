@@ -21,6 +21,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'enabled',
+        'establishment_id',
+        'api_token',
+        'user_name',
+        'ref_code',
+        'lastname',
+        'imagen',
+        'registration_date',
+        'phone_verification',
+        'terms','privacy_notice'
     ];
 
     /**
@@ -40,5 +51,23 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required',
+        'password' => 'required',
+        'email' => 'required|email',
+        'user_name' => 'required|unique:users',
+        'phone' => 'required|unique:users',
+    ];
+    public static $updaterules = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'user_name' => 'required|unique:users',
+        'phone' => 'required|unique:users',
     ];
 }

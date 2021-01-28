@@ -25,7 +25,7 @@
     },
     {
         "name": "establishment_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,establishments,id",
         "htmlType": "selectTable:establishment:name,id",
         "validations": "required",
         "searchable": true,

@@ -2,14 +2,24 @@
     <table class="table table-striped" id="users-table">
         <thead>
         <th>Name</th>
+        <th>Lastname</th>
+        <th>Username</th>
         <th>Email</th>
+        <th>Phone</th>
+        <th>Establishment</th>
+        <th>Role</th>
         <th colspan="3">Action</th>
         </thead>
         <tbody>
         @foreach($users as $user)
             <tr>
                 <td>{!! $user->name !!}</td>
+                <td>{!! $user->lastname !!}</td>
+                <td>{!! $user->user_name !!}</td>
                 <td>{!! $user->email !!}</td>
+                <td>{!! $user->phone !!}</td>
+                <td>{!! $user->establishment !!}</td>
+                <td>{!!implode(' ', $user->getRoleNames()->toArray() ) !!}</td>
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

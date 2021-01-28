@@ -13,7 +13,7 @@
     },
     {
         "name": "resource_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,resources,id",
         "htmlType": "selectTable:resources:name,id",
         "validations": "required",
         "searchable": true,
@@ -25,7 +25,7 @@
     },
     {
         "name": "session_id",
-        "dbType": "integer",
+        "dbType": "integer:unsigned:foreign,sessions,id",
         "htmlType": "selectTable:sessions:name,id",
         "validations": "required",
         "searchable": true,
