@@ -1,36 +1,36 @@
 <!-- User Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::label('user_id', __('models/turnos.fields.user_id').':') !!}
     {!! Form::select('user_id', $userItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Establishment Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('establishment_id', 'Establishment Id:') !!}
+    {!! Form::label('establishment_id', __('models/turnos.fields.establishment_id').':') !!}
     {!! Form::select('establishment_id', $establishmentItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Resource Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('resource_id', 'Resource Id:') !!}
+    {!! Form::label('resource_id', __('models/turnos.fields.resource_id').':') !!}
     {!! Form::select('resource_id', $resourceItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Session Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('session_id', 'Session Id:') !!}
+    {!! Form::label('session_id', __('models/turnos.fields.session_id').':') !!}
     {!! Form::select('session_id', $sessionItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Status Turno Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status_turno_id', 'Status Turno Id:') !!}
+    {!! Form::label('status_turno_id', __('models/turnos.fields.status_turno_id').':') !!}
     {!! Form::select('status_turno_id', $status_turnoItems, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Date Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('date', 'Date:') !!}
+    {!! Form::label('date', __('models/turnos.fields.date').':') !!}
     {!! Form::text('date', null, ['class' => 'form-control','id'=>'date']) !!}
 </div>
 
@@ -51,7 +51,7 @@
 
 <!-- Start Time Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('start_time', 'Start Time:') !!}
+    {!! Form::label('start_time', __('models/turnos.fields.start_time').':') !!}
     {!! Form::text('start_time', null, ['class' => 'form-control','id'=>'start_time']) !!}
 </div>
 
@@ -72,7 +72,7 @@
 
 <!-- End Time Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('end_time', 'End Time:') !!}
+    {!! Form::label('end_time', __('models/turnos.fields.end_time').':') !!}
     {!! Form::text('end_time', null, ['class' => 'form-control','id'=>'end_time']) !!}
 </div>
 
@@ -93,6 +93,6 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('turnos.index') }}" class="btn btn-secondary">Cancel</a>
+    {!! Form::submit(__('crud.save'), ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('turnos.index') }}" class="btn btn-default">@lang('crud.cancel')</a>
 </div>

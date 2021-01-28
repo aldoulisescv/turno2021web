@@ -5,8 +5,6 @@
                 <th>@lang('models/resources.fields.enabled')</th>
         <th>@lang('models/resources.fields.establishment_id')</th>
         <th>@lang('models/resources.fields.name')</th>
-        <th>@lang('models/resources.fields.selectable')</th>
-        <th>@lang('models/resources.fields.order_alpha')</th>
                 <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
@@ -16,8 +14,6 @@
                 <td>{{ $resource->enabled }}</td>
             <td>{{ $resource->establishment_id }}</td>
             <td>{{ $resource->name }}</td>
-            <td>{{ $resource->selectable }}</td>
-            <td>{{ $resource->order_alpha }}</td>
                 <td>
                     {!! Form::open(['route' => ['resources.destroy', $resource->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

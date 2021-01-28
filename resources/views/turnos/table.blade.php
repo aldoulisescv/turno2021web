@@ -2,15 +2,15 @@
     <table class="table table-striped" id="turnos-table">
         <thead>
             <tr>
-                <th>User Id</th>
-        <th>Establishment Id</th>
-        <th>Resource Id</th>
-        <th>Session Id</th>
-        <th>Status Turno Id</th>
-        <th>Date</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-                <th colspan="3">Action</th>
+                <th>@lang('models/turnos.fields.user_id')</th>
+        <th>@lang('models/turnos.fields.establishment_id')</th>
+        <th>@lang('models/turnos.fields.resource_id')</th>
+        <th>@lang('models/turnos.fields.session_id')</th>
+        <th>@lang('models/turnos.fields.status_turno_id')</th>
+        <th>@lang('models/turnos.fields.date')</th>
+        <th>@lang('models/turnos.fields.start_time')</th>
+        <th>@lang('models/turnos.fields.end_time')</th>
+                <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                     <div class='btn-group'>
                         <a href="{{ route('turnos.show', [$turno->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                         <a href="{{ route('turnos.edit', [$turno->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => 'return confirm("'.__('crud.are_you_sure').'")']) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

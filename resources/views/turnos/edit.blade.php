@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('turnos.index') !!}">Turno</a>
+             <a href="{!! route('turnos.index') !!}">@lang('models/turnos.singular')</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">@lang('crud.edit')</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Turno</strong>
+                              <strong>Edit @lang('models/turnos.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($turno, ['route' => ['turnos.update', $turno->id], 'method' => 'patch']) !!}
