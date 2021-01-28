@@ -2,18 +2,18 @@
     <table class="table table-striped" id="schedules-table">
         <thead>
             <tr>
-                <th>Enabled</th>
-        <th>Resource Id</th>
-        <th>Start Hour</th>
-        <th>End Hour</th>
-        <th>Sunday</th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thrusday</th>
-        <th>Friday</th>
-        <th>Saturday</th>
-                <th colspan="3">Action</th>
+                <th>@lang('models/schedules.fields.enabled')</th>
+        <th>@lang('models/schedules.fields.resource_id')</th>
+        <th>@lang('models/schedules.fields.start_hour')</th>
+        <th>@lang('models/schedules.fields.end_hour')</th>
+        <th>@lang('models/schedules.fields.sunday')</th>
+        <th>@lang('models/schedules.fields.monday')</th>
+        <th>@lang('models/schedules.fields.tuesday')</th>
+        <th>@lang('models/schedules.fields.wednesday')</th>
+        <th>@lang('models/schedules.fields.thrusday')</th>
+        <th>@lang('models/schedules.fields.friday')</th>
+        <th>@lang('models/schedules.fields.saturday')</th>
+                <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
                     <div class='btn-group'>
                         <a href="{{ route('schedules.show', [$schedule->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                         <a href="{{ route('schedules.edit', [$schedule->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => 'return confirm("'.__('crud.are_you_sure').'")']) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>

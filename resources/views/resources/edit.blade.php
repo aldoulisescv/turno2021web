@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('resources.index') !!}">Resource</a>
+             <a href="{!! route('resources.index') !!}">@lang('models/resources.singular')</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">@lang('crud.edit')</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Resource</strong>
+                              <strong>Edit @lang('models/resources.singular')</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($resource, ['route' => ['resources.update', $resource->id], 'method' => 'patch']) !!}

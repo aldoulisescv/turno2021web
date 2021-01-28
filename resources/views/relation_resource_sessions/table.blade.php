@@ -2,9 +2,9 @@
     <table class="table table-striped" id="relationResourceSessions-table">
         <thead>
             <tr>
-                <th>Resource Id</th>
-        <th>Session Id</th>
-                <th colspan="3">Action</th>
+                <th>@lang('models/relationResourceSessions.fields.resource_id')</th>
+        <th>@lang('models/relationResourceSessions.fields.session_id')</th>
+                <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +17,7 @@
                     <div class='btn-group'>
                         <a href="{{ route('relationResourceSessions.show', [$relationResourceSession->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
                         <a href="{{ route('relationResourceSessions.edit', [$relationResourceSession->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => 'return confirm("'.__('crud.are_you_sure').'")']) !!}
                     </div>
                     {!! Form::close() !!}
                 </td>
