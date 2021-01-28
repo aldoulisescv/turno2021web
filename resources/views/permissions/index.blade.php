@@ -2,7 +2,7 @@
 
 @section('content')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Permissions</li>
+        <li class="breadcrumb-item">@lang('models/permissions.plural')</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -12,7 +12,7 @@
                      <div class="card">
                          <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                             Permissions
+                             @lang('models/permissions.plural')
                              <a class="pull-right" href="{{ route('permissions.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
                          <div class="card-body">

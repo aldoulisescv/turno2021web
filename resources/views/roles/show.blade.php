@@ -3,9 +3,9 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('roles.index') }}">Role</a>
+                <a href="{{ route('roles.index') }}">@lang('models/roles.singular')</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">@lang('crud.detail')</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,8 +14,8 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('roles.index') }}" class="btn btn-light">Back</a>
+                                 <strong>@lang('crud.detail')</strong>
+                                  <a href="{{ route('roles.index') }}" class="btn btn-ghost-light">Back</a>
                              </div>
                              <div class="card-body">
                                  @include('roles.show_fields')

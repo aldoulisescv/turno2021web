@@ -3,9 +3,9 @@
 @section('content')
      <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ route('permissions.index') }}">Permission</a>
+                <a href="{{ route('permissions.index') }}">@lang('models/permissions.singular')</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">@lang('crud.detail')</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,8 +14,8 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('permissions.index') }}" class="btn btn-light">Back</a>
+                                 <strong>@lang('crud.detail')</strong>
+                                  <a href="{{ route('permissions.index') }}" class="btn btn-ghost-light">Back</a>
                              </div>
                              <div class="card-body">
                                  @include('permissions.show_fields')
