@@ -87,3 +87,6 @@ Route::middleware(['auth'])->group(function(){
 
 
 
+
+
+Route::resource('prospects', App\Http\Controllers\ProspectController::class);

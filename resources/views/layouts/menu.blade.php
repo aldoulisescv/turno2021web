@@ -68,3 +68,9 @@
         <span>@lang('models/turnos.plural')</span>
     </a>
 </li>
+<li class="nav-item {{ Request::is('prospects*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('prospects.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>@lang('models/prospects.plural')</span>
+    </a>
+</li>

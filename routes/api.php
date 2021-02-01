@@ -84,3 +84,5 @@ Route::resource('relation_resource_sessions', App\Http\Controllers\API\RelationR
 Route::resource('status_turnos', App\Http\Controllers\API\StatusTurnoAPIController::class);
 
 Route::resource('turnos', App\Http\Controllers\API\TurnoAPIController::class);
+
+Route::resource('prospects', App\Http\Controllers\API\ProspectAPIController::class);
