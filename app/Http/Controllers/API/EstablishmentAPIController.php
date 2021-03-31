@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateEstablishmentAPIRequest;
 use App\Http\Requests\API\UpdateEstablishmentAPIRequest;
 use App\Models\Establishment;
+use App\Models\Category;
 use App\Repositories\EstablishmentRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -73,12 +74,15 @@ class EstablishmentAPIController extends AppBaseController
     {
         /** @var Establishment $establishment */
         $establishment = $this->establishmentRepository->find($id);
-
+        $cat =Category::find($establishment['category_id']);
+        $subcat =Category::find($establishment['subcategory_id']);
+        $establishment['category_name']= $cat['name'];
+        $establishment['subcategory_name']= $subcat['name'];
         if (empty($establishment)) {
             return $this->sendError('Establishment not found');
         }
 
-        return $this->sendResponse(new EstablishmentResource($establishment), 'Establishment retrieved successfully');
+        return $this->sendResponse($establishment, 'Establishment retrieved successfully');
     }
 
     /**

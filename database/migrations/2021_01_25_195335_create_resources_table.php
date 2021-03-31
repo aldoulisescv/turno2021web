@@ -20,7 +20,7 @@ class CreateResourcesTable extends Migration
             $table->integer('establishment_id')->unsigned();
             $table->string('name');
             $table->boolean('selectable')->default(true);
-            $table->boolean('order_alpha')->default(true);
+            $table->string('order_alpha')->default('asc');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('establishment_id')->references('id')->on('establishments');

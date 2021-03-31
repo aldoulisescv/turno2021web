@@ -14,75 +14,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/login', 'AuthController@login');
+
+Route::get('/logout', 'AuthController@logout');
+Route::post('/register', 'AuthController@register');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/subirimagedata','ProspectAPIController@uploadimage');
+Route::middleware(['auth:api'])->group(function(){
+    Route::resource('resources', ResourceAPIController::class);
+
+    Route::resource('sessions', SessionAPIController::class);
 
 
+    Route::resource('schedules', ScheduleAPIController::class);
+
+    Route::resource('relation_resource_sessions', RelationResourceSessionAPIController::class);
+
+    Route::resource('status_turnos', StatusTurnoAPIController::class);
+
+    Route::resource('turnos', TurnoAPIController::class);
+
+    Route::resource('prospects', ProspectAPIController::class);
 
 
+    Route::resource('establishments', EstablishmentAPIController::class);
+    Route::resource('users', UserAPIController::class);
 
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('establishments', App\Http\Controllers\API\EstablishmentAPIController::class);
-
-Route::resource('resources', App\Http\Controllers\API\ResourceAPIController::class);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::resource('sessions', App\Http\Controllers\API\SessionAPIController::class);
-
-Route::resource('schedules', App\Http\Controllers\API\ScheduleAPIController::class);
-
-Route::resource('relation_resource_sessions', App\Http\Controllers\API\RelationResourceSessionAPIController::class);
-
-Route::resource('status_turnos', App\Http\Controllers\API\StatusTurnoAPIController::class);
-
-Route::resource('turnos', App\Http\Controllers\API\TurnoAPIController::class);
-
-Route::resource('prospects', App\Http\Controllers\API\ProspectAPIController::class);
+Route::resource('categories', CategoryAPIController::class);

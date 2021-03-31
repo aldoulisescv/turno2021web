@@ -109,7 +109,7 @@
     },
     {
         "name": "num_int",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
         "validations": "",
         "searchable": true,

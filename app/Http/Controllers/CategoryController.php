@@ -58,7 +58,7 @@ class CategoryController extends AppBaseController
 
         $category = $this->categoryRepository->create($input);
 
-        Flash::success('Category saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
     }
@@ -75,7 +75,7 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
@@ -95,7 +95,7 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
@@ -116,14 +116,14 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
 
         $category = $this->categoryRepository->update($request->all(), $id);
 
-        Flash::success('Category updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
     }
@@ -142,14 +142,14 @@ class CategoryController extends AppBaseController
         $category = $this->categoryRepository->find($id);
 
         if (empty($category)) {
-            Flash::error('Category not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/categories.singular')]));
 
             return redirect(route('categories.index'));
         }
 
         $this->categoryRepository->delete($id);
 
-        Flash::success('Category deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/categories.singular')]));
 
         return redirect(route('categories.index'));
     }

@@ -2,7 +2,7 @@
 
 return array (
   'singular' => 'Category',
-  'plural' => 'Categorias',
+  'plural' => 'Categories',
   'fields' => 
   array (
     'id' => 'Id',

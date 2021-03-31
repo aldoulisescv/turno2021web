@@ -25,7 +25,7 @@
     },
     {
         "name": "owner",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
         "validations": "",
         "searchable": true,
@@ -97,8 +97,8 @@
     },
     {
         "name": "sent_wa",
-        "dbType": "boolean:default,true",
-        "htmlType": "toggle-switch,true",
+        "dbType": "boolean:default,false",
+        "htmlType": "toggle-switch,false",
         "validations": "",
         "searchable": true,
         "fillable": true,
@@ -109,7 +109,7 @@
     },
     {
         "name": "facebook",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
         "validations": "",
         "searchable": true,
@@ -121,8 +121,8 @@
     },
     {
         "name": "sent_fb",
-        "dbType": "boolean:default,true",
-        "htmlType": "toggle-switch,true",
+        "dbType": "boolean:default,false",
+        "htmlType": "toggle-switch,false",
         "validations": "",
         "searchable": true,
         "fillable": true,
@@ -133,7 +133,7 @@
     },
     {
         "name": "instagram",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
@@ -145,8 +145,8 @@
     },
     {
         "name": "sent_ig",
-        "dbType": "boolean:default,true",
-        "htmlType": "toggle-switch,true",
+        "dbType": "boolean:default,false",
+        "htmlType": "toggle-switch,false",
         "validations": "",
         "searchable": true,
         "fillable": true,
@@ -157,7 +157,7 @@
     },
     {
         "name": "notes",
-        "dbType": "string",
+        "dbType": "string:nullable",
         "htmlType": "textarea",
         "validations": "",
         "searchable": true,

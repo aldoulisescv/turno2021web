@@ -86,7 +86,6 @@ class Prospect extends Model
         'image' => 'required',
         'latitude' => 'required',
         'longitude' => 'required',
-        'instagram' => 'required'
     ];
 
     

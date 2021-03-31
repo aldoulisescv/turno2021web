@@ -15,14 +15,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return redirect('/home');
+    // Route::view('/login', 'home');
 });
-
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 Auth::routes(['verify' => true, 'register' => true]);
 
 Route::middleware(['auth'])->group(function(){
     // Route::group(['middleware' => ['role:super_admin']], function () {
        
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+        Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->withoutMiddleware(['root:root']);
         Route::resource('users', App\Http\Controllers\UserController::class);
         Route::resource('permissions', App\Http\Controllers\PermissionController::class);
         Route::resource('roles', App\Http\Controllers\RoleController::class);
@@ -34,6 +38,8 @@ Route::middleware(['auth'])->group(function(){
         Route::resource('relationResourceSessions', App\Http\Controllers\RelationResourceSessionController::class);
         Route::resource('statusTurnos', App\Http\Controllers\StatusTurnoController::class);
         Route::resource('turnos', App\Http\Controllers\TurnoController::class);
+
+        Route::resource('prospects', App\Http\Controllers\ProspectController::class);
     // });
 
 });
@@ -87,6 +93,3 @@ Route::middleware(['auth'])->group(function(){
 
 
 
-
-
-Route::resource('prospects', App\Http\Controllers\ProspectController::class);

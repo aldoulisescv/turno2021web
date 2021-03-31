@@ -4,6 +4,9 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Exception;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -31,10 +34,27 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
+    
+
     public function register()
     {
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+    /**
+     * Convert an authentication exception into an unauthenticated response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $e
+     * @return \Illuminate\Http\Response
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if( $request->is('api/*')){
+            return response()->json(["success"=>false,'message' => 'Se terminó la sesión', 'error' => 'unauthenticated'], 200);
+        }else{
+            return redirect()->guest('login');
+        }
     }
 }

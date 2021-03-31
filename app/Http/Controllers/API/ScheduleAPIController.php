@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateScheduleAPIRequest;
 use App\Http\Requests\API\UpdateScheduleAPIRequest;
 use App\Models\Schedule;
+use App\Models\Resource;
 use App\Repositories\ScheduleRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -40,8 +41,11 @@ class ScheduleAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
-
-        return $this->sendResponse(ScheduleResource::collection($schedules), 'Schedules retrieved successfully');
+        foreach ($schedules as $key => $schedule) {
+            $resource =Resource::where('id',$schedule['resource_id'])->first()->name;
+            $schedules[$key]['resource_name'] = $resource;
+        }
+        return $this->sendResponse($schedules, 'Schedules retrieved successfully');
     }
 
     /**

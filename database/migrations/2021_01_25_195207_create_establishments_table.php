@@ -24,7 +24,7 @@ class CreateEstablishmentsTable extends Migration
             $table->integer('stepping');
             $table->string('street');
             $table->string('num_ext');
-            $table->string('num_int');
+            $table->string('num_int')->nullable();
             $table->string('postal_code');
             $table->string('zone');
             $table->string('city');

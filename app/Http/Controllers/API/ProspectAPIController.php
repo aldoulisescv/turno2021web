@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\ProspectResource;
 use Response;
+use DB;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ProspectController
@@ -26,6 +28,29 @@ class ProspectAPIController extends AppBaseController
         $this->prospectRepository = $prospectRepo;
     }
 
+    public function uploadImage(Request $request) 
+	{
+         try {
+            $image = $request->file('image');
+            $save_path = storage_path().'/app/public/';
+            if(!isset($request->id)){
+                $statement = DB::select("SHOW TABLE STATUS LIKE '".$request->name."s'");
+                $nextId = $statement[0]->Auto_increment;
+            }else{
+                $nextId = $request->id;
+            }
+            $image->move($save_path.$request->name.'s/', $request->name.'_' . $nextId.'.png');
+
+        } catch(\Exception $e) {
+            return $this->sendError(
+                $e->getMessage(), 200
+            );
+        }
+        return $this->sendResponse(
+            $request->name.'s/'. $request->name.'_' . $nextId.'.png',
+            'success', '200'
+        );
+	}
     /**
      * Display a listing of the Prospect.
      * GET|HEAD /prospects
@@ -40,7 +65,6 @@ class ProspectAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
-
         return $this->sendResponse(
             ProspectResource::collection($prospects),
             __('messages.retrieved', ['model' => __('models/prospects.plural')])
@@ -58,7 +82,9 @@ class ProspectAPIController extends AppBaseController
     public function store(CreateProspectAPIRequest $request)
     {
         $input = $request->all();
-
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'prospects'");
+        $nextId = $statement[0]->Auto_increment;
+        $input['image']='prospects/prospect_'.$nextId.'.png';
         $prospect = $this->prospectRepository->create($input);
 
         return $this->sendResponse(
@@ -114,6 +140,7 @@ class ProspectAPIController extends AppBaseController
             );
         }
 
+        $input['image']='prospects/prospect_'.$id.'.png';
         $prospect = $this->prospectRepository->update($input, $id);
 
         return $this->sendResponse(

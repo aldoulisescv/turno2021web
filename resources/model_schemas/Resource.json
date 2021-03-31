@@ -61,7 +61,7 @@
     },
     {
         "name": "order_alpha",
-        "dbType": "boolean:default,true",
+        "dbType": "string:default,asc",
         "htmlType": "toggle-switch,true",
         "validations": "",
         "searchable": true,
