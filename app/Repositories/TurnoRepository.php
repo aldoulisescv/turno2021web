@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class TurnoRepository
  * @package App\Repositories
- * @version January 27, 2021, 2:34 am UTC
+ * @version March 31, 2021, 6:29 pm UTC
 */
 
 class TurnoRepository extends BaseRepository
@@ -18,6 +18,8 @@ class TurnoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'user_id',
+        'email',
+        'phone',
         'establishment_id',
         'resource_id',
         'session_id',

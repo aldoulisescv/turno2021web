@@ -47,3 +47,5 @@ Route::middleware(['auth:api'])->group(function(){
 });
 
 Route::resource('categories', CategoryAPIController::class);
+
+Route::resource('blocked_dates', App\Http\Controllers\API\BlockedDatesAPIController::class);

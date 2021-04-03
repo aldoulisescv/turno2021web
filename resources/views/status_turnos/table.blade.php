@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>@lang('models/statusTurnos.fields.name')</th>
+        <th>@lang('models/statusTurnos.fields.description')</th>
                 <th colspan="3">@lang('crud.action')</th>
             </tr>
         </thead>
@@ -10,6 +11,7 @@
         @foreach($statusTurnos as $statusTurno)
             <tr>
                 <td>{{ $statusTurno->name }}</td>
+            <td>{{ $statusTurno->description }}</td>
                 <td>
                     {!! Form::open(['route' => ['statusTurnos.destroy', $statusTurno->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

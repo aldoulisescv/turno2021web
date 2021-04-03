@@ -62,15 +62,22 @@
         <span>@lang('models/statusTurnos.plural')</span>
     </a>
 </li>
+
+<li class="nav-item {{ Request::is('prospects*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('prospects.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>@lang('models/prospects.plural')</span>
+    </a>
+</li>
 <li class="nav-item {{ Request::is('turnos*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('turnos.index') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>@lang('models/turnos.plural')</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('prospects*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('prospects.index') }}">
+<li class="nav-item {{ Request::is('blockedDates*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('blockedDates.index') }}">
         <i class="nav-icon icon-cursor"></i>
-        <span>@lang('models/prospects.plural')</span>
+        <span>@lang('models/blockedDates.plural')</span>
     </a>
 </li>

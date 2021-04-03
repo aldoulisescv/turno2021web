@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class StatusTurnoRepository
  * @package App\Repositories
- * @version January 27, 2021, 2:21 am UTC
+ * @version March 31, 2021, 9:15 pm UTC
 */
 
 class StatusTurnoRepository extends BaseRepository
@@ -17,7 +17,8 @@ class StatusTurnoRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'name'
+        'name',
+        'description'
     ];
 
     /**

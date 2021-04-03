@@ -41,7 +41,10 @@ class TurnoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse(TurnoResource::collection($turnos), 'Turnos retrieved successfully');
+        return $this->sendResponse(
+            TurnoResource::collection($turnos),
+            __('messages.retrieved', ['model' => __('models/turnos.plural')])
+        );
     }
 
     /**
@@ -58,7 +61,10 @@ class TurnoAPIController extends AppBaseController
 
         $turno = $this->turnoRepository->create($input);
 
-        return $this->sendResponse(new TurnoResource($turno), 'Turno saved successfully');
+        return $this->sendResponse(
+            new TurnoResource($turno),
+            __('messages.saved', ['model' => __('models/turnos.singular')])
+        );
     }
 
     /**
@@ -75,10 +81,15 @@ class TurnoAPIController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            return $this->sendError('Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/turnos.singular')])
+            );
         }
 
-        return $this->sendResponse(new TurnoResource($turno), 'Turno retrieved successfully');
+        return $this->sendResponse(
+            new TurnoResource($turno),
+            __('messages.retrieved', ['model' => __('models/turnos.singular')])
+        );
     }
 
     /**
@@ -98,12 +109,17 @@ class TurnoAPIController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            return $this->sendError('Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/turnos.singular')])
+            );
         }
 
         $turno = $this->turnoRepository->update($input, $id);
 
-        return $this->sendResponse(new TurnoResource($turno), 'Turno updated successfully');
+        return $this->sendResponse(
+            new TurnoResource($turno),
+            __('messages.updated', ['model' => __('models/turnos.singular')])
+        );
     }
 
     /**
@@ -122,11 +138,16 @@ class TurnoAPIController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            return $this->sendError('Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/turnos.singular')])
+            );
         }
 
         $turno->delete();
 
-        return $this->sendSuccess('Turno deleted successfully');
+        return $this->sendResponse(
+            $id,
+            __('messages.deleted', ['model' => __('models/turnos.singular')])
+        );
     }
 }

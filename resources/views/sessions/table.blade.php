@@ -5,6 +5,7 @@
                 <th>@lang('models/sessions.fields.enabled')</th>
         <th>@lang('models/sessions.fields.establishment_id')</th>
         <th>@lang('models/sessions.fields.name')</th>
+        <th>@lang('models/sessions.fields.color')</th>
         <th>@lang('models/sessions.fields.duration')</th>
         <th>@lang('models/sessions.fields.cost')</th>
                 <th colspan="3">@lang('crud.action')</th>
@@ -16,6 +17,7 @@
                 <td>{{ $session->enabled }}</td>
             <td>{{ $session->establishment_id }}</td>
             <td>{{ $session->name }}</td>
+            <td>{{ $session->color }}</td>
             <td>{{ $session->duration }}</td>
             <td>{{ $session->cost }}</td>
                 <td>

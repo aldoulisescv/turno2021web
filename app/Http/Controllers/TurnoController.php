@@ -58,7 +58,7 @@ class TurnoController extends AppBaseController
 
         $turno = $this->turnoRepository->create($input);
 
-        Flash::success('Turno saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/turnos.singular')]));
 
         return redirect(route('turnos.index'));
     }
@@ -75,7 +75,7 @@ class TurnoController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            Flash::error('Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/turnos.singular')]));
 
             return redirect(route('turnos.index'));
         }
@@ -95,7 +95,7 @@ class TurnoController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            Flash::error('Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/turnos.singular')]));
 
             return redirect(route('turnos.index'));
         }
@@ -116,14 +116,14 @@ class TurnoController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            Flash::error('Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/turnos.singular')]));
 
             return redirect(route('turnos.index'));
         }
 
         $turno = $this->turnoRepository->update($request->all(), $id);
 
-        Flash::success('Turno updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/turnos.singular')]));
 
         return redirect(route('turnos.index'));
     }
@@ -142,14 +142,14 @@ class TurnoController extends AppBaseController
         $turno = $this->turnoRepository->find($id);
 
         if (empty($turno)) {
-            Flash::error('Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/turnos.singular')]));
 
             return redirect(route('turnos.index'));
         }
 
         $this->turnoRepository->delete($id);
 
-        Flash::success('Turno deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/turnos.singular')]));
 
         return redirect(route('turnos.index'));
     }

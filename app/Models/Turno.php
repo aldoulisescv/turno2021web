@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Turno
  * @package App\Models
- * @version January 27, 2021, 2:34 am UTC
+ * @version March 31, 2021, 6:29 pm UTC
  *
  * @property integer $user_id
+ * @property string $email
+ * @property string $phone
  * @property integer $establishment_id
  * @property integer $resource_id
  * @property integer $session_id
@@ -35,6 +37,8 @@ class Turno extends Model
 
     public $fillable = [
         'user_id',
+        'email',
+        'phone',
         'establishment_id',
         'resource_id',
         'session_id',
@@ -52,6 +56,8 @@ class Turno extends Model
     protected $casts = [
         'id' => 'integer',
         'user_id' => 'integer',
+        'email' => 'string',
+        'phone' => 'string',
         'establishment_id' => 'integer',
         'resource_id' => 'integer',
         'session_id' => 'integer',
@@ -65,7 +71,7 @@ class Turno extends Model
      * @var array
      */
     public static $rules = [
-        'user_id' => 'required',
+        'email' => 'required',
         'establishment_id' => 'required',
         'resource_id' => 'required',
         'session_id' => 'required',

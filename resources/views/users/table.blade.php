@@ -18,7 +18,7 @@
                 <td>{!! $user->user_name !!}</td>
                 <td>{!! $user->email !!}</td>
                 <td>{!! $user->phone !!}</td>
-                <td>{!! $user->establishment !!}</td>
+                <td>{!! $user->establishment_id !!}</td>
                 <td>{!!implode(' ', $user->getRoleNames()->toArray() ) !!}</td>
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}

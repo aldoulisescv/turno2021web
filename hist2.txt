@@ -59,19 +59,21 @@ php artisan passport:install
 php artisan infyom:scaffold Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json
 php artisan migrate:rollback --path=/database/migrations/2021_01_22_191435_create_categories_table.php
 
-/Applications/MAMP/htdocs/turno2021/database/migrations/2021_01_22_191435_create_categories_table.php
+php artisan migrate:rollback --path=/database/migrations/2021_01_27_023459_create_turnos_table.php
+
+/Applications/MAMP/htdocs/turno2021/database/migrations/2021_01_22_19143 5_create_categories_table.php
 
 establishment
 
 php artisan infyom:api_scaffold Establishment --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Establishment.json
 
-php artisan infyom:rollback Establishment api_scaffold
+php artisan infyom:rollback Turno api_scaffold
 
-  php artisan migrate:rollback --path=/Applications/MAMP/htdocs/turno2021/database/migrations/2021_02_01_192520_create_prospects_table.php
+  php artisan migrate:rollback --path=database/migrations/2021_01_27_023459_create_turnos_table.php
 
 php artisan infyom.scaffold:views Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json 
 
 
 php artisan infyom.api:controller Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json 
 
-php artisan infyom:api_scaffold Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json --skip=migration
+php artisan infyom:api_scaffold StatusTurno --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/StatusTurno.json --skip=migration

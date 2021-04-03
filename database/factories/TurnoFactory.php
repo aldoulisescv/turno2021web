@@ -23,6 +23,8 @@ class TurnoFactory extends Factory
     {
         return [
             'user_id' => $this->faker->word,
+        'email' => $this->faker->word,
+        'phone' => $this->faker->word,
         'establishment_id' => $this->faker->randomDigitNotNull,
         'resource_id' => $this->faker->randomDigitNotNull,
         'session_id' => $this->faker->randomDigitNotNull,

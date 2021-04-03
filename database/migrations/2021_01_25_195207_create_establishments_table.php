@@ -18,7 +18,7 @@ class CreateEstablishmentsTable extends Migration
             $table->increments('id');
             $table->boolean('enabled')->default(true);
             $table->integer('category_id')->unsigned();
-            $table->integer('subcategory_id')->unsigned();
+            $table->string('subcategory_id');
             $table->string('name');
             $table->string('logo');
             $table->integer('stepping');
@@ -40,7 +40,6 @@ class CreateEstablishmentsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('subcategory_id')->references('id')->on('categories');
         });
     }
 

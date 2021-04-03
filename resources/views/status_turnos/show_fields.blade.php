@@ -4,6 +4,12 @@
     <p>{{ $statusTurno->name }}</p>
 </div>
 
+<!-- Description Field -->
+<div class="form-group">
+    {!! Form::label('description', __('models/statusTurnos.fields.description').':') !!}
+    <p>{{ $statusTurno->description }}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', __('models/statusTurnos.fields.created_at').':') !!}

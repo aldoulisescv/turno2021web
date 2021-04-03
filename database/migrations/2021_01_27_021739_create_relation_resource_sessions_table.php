@@ -19,7 +19,7 @@ class CreateRelationResourceSessionsTable extends Migration
             $table->integer('resource_id')->unsigned();
             $table->integer('session_id')->unsigned();
             $table->timestamps();
-            // $table->softDeletes();
+            $table->softDeletes();
             $table->foreign('resource_id')->references('id')->on('resources');            
             $table->foreign('session_id')->references('id')->on('sessions');
 

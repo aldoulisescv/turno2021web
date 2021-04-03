@@ -4,6 +4,18 @@
     <p>{{ $turno->user_id }}</p>
 </div>
 
+<!-- Email Field -->
+<div class="form-group">
+    {!! Form::label('email', __('models/turnos.fields.email').':') !!}
+    <p>{{ $turno->email }}</p>
+</div>
+
+<!-- Phone Field -->
+<div class="form-group">
+    {!! Form::label('phone', __('models/turnos.fields.phone').':') !!}
+    <p>{{ $turno->phone }}</p>
+</div>
+
 <!-- Establishment Id Field -->
 <div class="form-group">
     {!! Form::label('establishment_id', __('models/turnos.fields.establishment_id').':') !!}

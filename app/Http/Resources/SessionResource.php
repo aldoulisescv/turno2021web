@@ -19,6 +19,7 @@ class SessionResource extends JsonResource
             'enabled' => $this->enabled,
             'establishment_id' => $this->establishment_id,
             'name' => $this->name,
+            'color' => $this->color,
             'duration' => $this->duration,
             'cost' => $this->cost,
             'max_days_schedule' => $this->max_days_schedule,

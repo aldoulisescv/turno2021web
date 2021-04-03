@@ -25,6 +25,7 @@ class SessionFactory extends Factory
             'enabled' => $this->faker->word,
         'establishment_id' => $this->faker->randomDigitNotNull,
         'name' => $this->faker->word,
+        'color' => $this->faker->word,
         'duration' => $this->faker->word,
         'cost' => $this->faker->randomDigitNotNull,
         'max_days_schedule' => $this->faker->randomDigitNotNull,

@@ -8,7 +8,7 @@ use App\Repositories\BaseRepository;
 /**
  * Class SessionRepository
  * @package App\Repositories
- * @version January 27, 2021, 12:23 am UTC
+ * @version March 31, 2021, 6:44 pm UTC
 */
 
 class SessionRepository extends BaseRepository
@@ -20,6 +20,7 @@ class SessionRepository extends BaseRepository
         'enabled',
         'establishment_id',
         'name',
+        'color',
         'duration',
         'cost',
         'max_days_schedule',

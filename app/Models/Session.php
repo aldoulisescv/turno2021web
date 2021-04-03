@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Session
  * @package App\Models
- * @version January 27, 2021, 12:23 am UTC
+ * @version March 31, 2021, 6:44 pm UTC
  *
  * @property boolean $enabled
  * @property integer $establishment_id
  * @property string $name
+ * @property string $color
  * @property string $duration
  * @property number $cost
  * @property integer $max_days_schedule
@@ -43,6 +44,7 @@ class Session extends Model
         'enabled',
         'establishment_id',
         'name',
+        'color',
         'duration',
         'cost',
         'max_days_schedule',
@@ -66,6 +68,7 @@ class Session extends Model
         'enabled' => 'boolean',
         'establishment_id' => 'integer',
         'name' => 'string',
+        'color' => 'string',
         'duration' => 'string',
         'cost' => 'float',
         'max_days_schedule' => 'integer',
@@ -85,6 +88,7 @@ class Session extends Model
     public static $rules = [
         'establishment_id' => 'required',
         'name' => 'required',
+        'color' => 'required',
         'duration' => 'required',
         'cost' => 'required'
     ];

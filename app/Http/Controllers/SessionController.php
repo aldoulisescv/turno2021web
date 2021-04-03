@@ -46,7 +46,7 @@ class SessionController extends AppBaseController
     }
 
     /**
-     * Store a newly created Session in storage.p
+     * Store a newly created Session in storage.
      *
      * @param CreateSessionRequest $request
      *
@@ -62,7 +62,7 @@ class SessionController extends AppBaseController
         //  dd($input);
         $session = $this->sessionRepository->create($input);
 
-        Flash::success('Session saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/sessions.singular')]));
 
         return redirect(route('sessions.index'));
     }
@@ -79,7 +79,7 @@ class SessionController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            Flash::error('Session not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/sessions.singular')]));
 
             return redirect(route('sessions.index'));
         }
@@ -99,7 +99,7 @@ class SessionController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            Flash::error('Session not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/sessions.singular')]));
 
             return redirect(route('sessions.index'));
         }
@@ -120,7 +120,7 @@ class SessionController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            Flash::error('Session not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/sessions.singular')]));
 
             return redirect(route('sessions.index'));
         }
@@ -133,7 +133,7 @@ class SessionController extends AppBaseController
         //  dd($input);
         $session = $this->sessionRepository->update($input, $id);
 
-        Flash::success('Session updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/sessions.singular')]));
 
         return redirect(route('sessions.index'));
     }
@@ -152,14 +152,14 @@ class SessionController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            Flash::error('Session not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/sessions.singular')]));
 
             return redirect(route('sessions.index'));
         }
 
         $this->sessionRepository->delete($id);
 
-        Flash::success('Session deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/sessions.singular')]));
 
         return redirect(route('sessions.index'));
     }

@@ -58,7 +58,7 @@ class StatusTurnoController extends AppBaseController
 
         $statusTurno = $this->statusTurnoRepository->create($input);
 
-        Flash::success('Status Turno saved successfully.');
+        Flash::success(__('messages.saved', ['model' => __('models/statusTurnos.singular')]));
 
         return redirect(route('statusTurnos.index'));
     }
@@ -75,7 +75,7 @@ class StatusTurnoController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            Flash::error('Status Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/statusTurnos.singular')]));
 
             return redirect(route('statusTurnos.index'));
         }
@@ -95,7 +95,7 @@ class StatusTurnoController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            Flash::error('Status Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/statusTurnos.singular')]));
 
             return redirect(route('statusTurnos.index'));
         }
@@ -116,14 +116,14 @@ class StatusTurnoController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            Flash::error('Status Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/statusTurnos.singular')]));
 
             return redirect(route('statusTurnos.index'));
         }
 
         $statusTurno = $this->statusTurnoRepository->update($request->all(), $id);
 
-        Flash::success('Status Turno updated successfully.');
+        Flash::success(__('messages.updated', ['model' => __('models/statusTurnos.singular')]));
 
         return redirect(route('statusTurnos.index'));
     }
@@ -142,14 +142,14 @@ class StatusTurnoController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            Flash::error('Status Turno not found');
+            Flash::error(__('messages.not_found', ['model' => __('models/statusTurnos.singular')]));
 
             return redirect(route('statusTurnos.index'));
         }
 
         $this->statusTurnoRepository->delete($id);
 
-        Flash::success('Status Turno deleted successfully.');
+        Flash::success(__('messages.deleted', ['model' => __('models/statusTurnos.singular')]));
 
         return redirect(route('statusTurnos.index'));
     }

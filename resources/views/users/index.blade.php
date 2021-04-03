@@ -15,9 +15,7 @@
                              Users
 
                              <a class="pull-right" href="{!! route('users.create') !!}"><i class="fa fa-plus-square fa-lg"></i></a>
-                             @can('creteusers')
-                             <a class="pull-right" href="{!! route('users.create') !!}"><i class="fa fa-plus-square fa-lg"></i></a>
-                             @endcan
+                             
                          </div>
                          <div class="card-body">
                              @include('users.table')

@@ -16,6 +16,12 @@
     <p>{{ $session->name }}</p>
 </div>
 
+<!-- Color Field -->
+<div class="form-group">
+    {!! Form::label('color', __('models/sessions.fields.color').':') !!}
+    <p>{{ $session->color }}</p>
+</div>
+
 <!-- Duration Field -->
 <div class="form-group">
     {!! Form::label('duration', __('models/sessions.fields.duration').':') !!}

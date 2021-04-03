@@ -4,6 +4,18 @@
     {!! Form::select('user_id', $userItems, null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', __('models/turnos.fields.email').':') !!}
+    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Phone Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('phone', __('models/turnos.fields.phone').':') !!}
+    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Establishment Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('establishment_id', __('models/turnos.fields.establishment_id').':') !!}

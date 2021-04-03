@@ -9,6 +9,7 @@ return array (
     'enabled' => 'Enabled',
     'establishment_id' => 'Establishment Id',
     'name' => 'Name',
+    'color' => 'Color',
     'duration' => 'Duration',
     'cost' => 'Cost',
     'max_days_schedule' => 'Max Days Schedule',

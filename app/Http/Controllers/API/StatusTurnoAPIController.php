@@ -41,7 +41,10 @@ class StatusTurnoAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse(StatusTurnoResource::collection($statusTurnos), 'Status Turnos retrieved successfully');
+        return $this->sendResponse(
+            StatusTurnoResource::collection($statusTurnos),
+            __('messages.retrieved', ['model' => __('models/statusTurnos.plural')])
+        );
     }
 
     /**
@@ -58,7 +61,10 @@ class StatusTurnoAPIController extends AppBaseController
 
         $statusTurno = $this->statusTurnoRepository->create($input);
 
-        return $this->sendResponse(new StatusTurnoResource($statusTurno), 'Status Turno saved successfully');
+        return $this->sendResponse(
+            new StatusTurnoResource($statusTurno),
+            __('messages.saved', ['model' => __('models/statusTurnos.singular')])
+        );
     }
 
     /**
@@ -75,10 +81,15 @@ class StatusTurnoAPIController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            return $this->sendError('Status Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/statusTurnos.singular')])
+            );
         }
 
-        return $this->sendResponse(new StatusTurnoResource($statusTurno), 'Status Turno retrieved successfully');
+        return $this->sendResponse(
+            new StatusTurnoResource($statusTurno),
+            __('messages.retrieved', ['model' => __('models/statusTurnos.singular')])
+        );
     }
 
     /**
@@ -98,12 +109,17 @@ class StatusTurnoAPIController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            return $this->sendError('Status Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/statusTurnos.singular')])
+            );
         }
 
         $statusTurno = $this->statusTurnoRepository->update($input, $id);
 
-        return $this->sendResponse(new StatusTurnoResource($statusTurno), 'StatusTurno updated successfully');
+        return $this->sendResponse(
+            new StatusTurnoResource($statusTurno),
+            __('messages.updated', ['model' => __('models/statusTurnos.singular')])
+        );
     }
 
     /**
@@ -122,11 +138,16 @@ class StatusTurnoAPIController extends AppBaseController
         $statusTurno = $this->statusTurnoRepository->find($id);
 
         if (empty($statusTurno)) {
-            return $this->sendError('Status Turno not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/statusTurnos.singular')])
+            );
         }
 
         $statusTurno->delete();
 
-        return $this->sendSuccess('Status Turno deleted successfully');
+        return $this->sendResponse(
+            $id,
+            __('messages.deleted', ['model' => __('models/statusTurnos.singular')])
+        );
     }
 }

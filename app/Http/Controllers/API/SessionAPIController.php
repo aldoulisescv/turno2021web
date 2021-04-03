@@ -41,7 +41,10 @@ class SessionAPIController extends AppBaseController
             $request->get('limit')
         );
 
-        return $this->sendResponse(SessionResource::collection($sessions), 'Sessions retrieved successfully');
+        return $this->sendResponse(
+            SessionResource::collection($sessions),
+            __('messages.retrieved', ['model' => __('models/sessions.plural')])
+        );
     }
 
     /**
@@ -58,7 +61,10 @@ class SessionAPIController extends AppBaseController
 
         $session = $this->sessionRepository->create($input);
 
-        return $this->sendResponse(new SessionResource($session), 'Session saved successfully');
+        return $this->sendResponse(
+            new SessionResource($session),
+            __('messages.saved', ['model' => __('models/sessions.singular')])
+        );
     }
 
     /**
@@ -75,10 +81,15 @@ class SessionAPIController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            return $this->sendError('Session not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/sessions.singular')])
+            );
         }
 
-        return $this->sendResponse(new SessionResource($session), 'Session retrieved successfully');
+        return $this->sendResponse(
+            new SessionResource($session),
+            __('messages.retrieved', ['model' => __('models/sessions.singular')])
+        );
     }
 
     /**
@@ -98,12 +109,17 @@ class SessionAPIController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            return $this->sendError('Session not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/sessions.singular')])
+            );
         }
 
         $session = $this->sessionRepository->update($input, $id);
 
-        return $this->sendResponse(new SessionResource($session), 'Session updated successfully');
+        return $this->sendResponse(
+            new SessionResource($session),
+            __('messages.updated', ['model' => __('models/sessions.singular')])
+        );
     }
 
     /**
@@ -122,11 +138,16 @@ class SessionAPIController extends AppBaseController
         $session = $this->sessionRepository->find($id);
 
         if (empty($session)) {
-            return $this->sendError('Session not found');
+            return $this->sendError(
+                __('messages.not_found', ['model' => __('models/sessions.singular')])
+            );
         }
 
         $session->delete();
 
-        return $this->sendSuccess('Session deleted successfully');
+        return $this->sendResponse(
+            $id,
+            __('messages.deleted', ['model' => __('models/sessions.singular')])
+        );
     }
 }

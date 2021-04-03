@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class StatusTurno
  * @package App\Models
- * @version January 27, 2021, 2:21 am UTC
+ * @version March 31, 2021, 9:15 pm UTC
  *
  * @property string $name
+ * @property string $description
  */
 class StatusTurno extends Model
 {
@@ -27,7 +28,8 @@ class StatusTurno extends Model
 
 
     public $fillable = [
-        'name'
+        'name',
+        'description'
     ];
 
     /**
@@ -37,7 +39,8 @@ class StatusTurno extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'name' => 'string'
+        'name' => 'string',
+        'description' => 'string'
     ];
 
     /**

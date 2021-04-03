@@ -17,6 +17,7 @@ class CreateStatusTurnosTable extends Migration
         Schema::create('status_turnos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('description')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
