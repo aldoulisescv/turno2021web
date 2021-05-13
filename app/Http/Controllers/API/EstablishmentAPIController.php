@@ -74,13 +74,16 @@ class EstablishmentAPIController extends AppBaseController
     {
         /** @var Establishment $establishment */
         $establishment = $this->establishmentRepository->find($id);
-        $cat =Category::find($establishment['category_id']);
-        $subcat =Category::find($establishment['subcategory_id']);
-        $establishment['category_name']= $cat['name'];
-        $establishment['subcategory_name']= $subcat['name'];
         if (empty($establishment)) {
             return $this->sendError('Establishment not found');
         }
+        $cat =Category::find($establishment['category_id']);
+        $subcats = explode(',',$establishment['subcategory_id']);
+        $items = Category::whereIn('id', $subcats)->get()->toArray();
+        $subcatsnames = implode(',',array_column($items,'name') );
+        $establishment['category_name']= $cat['name'];
+        $establishment['subcategory_name']= $subcatsnames;
+        
 
         return $this->sendResponse($establishment, 'Establishment retrieved successfully');
     }

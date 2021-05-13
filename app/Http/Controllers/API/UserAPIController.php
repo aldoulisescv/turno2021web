@@ -35,12 +35,23 @@ class UserAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $users = $this->UserRepository->all(
-            $request->except(['skip', 'limit']),
-            $request->get('skip'),
-            $request->get('limit')
-        );
-
+        $role= $request->input('role');
+        // dd($role);
+        if($role){
+            $users = User::whereHas(
+                'roles', function($q)use ($role){
+                    $q->where('name', $role);
+                }
+            )->get();
+        }else{
+            $users = $this->UserRepository->all(
+                $request->except(['skip', 'limit']),
+                $request->get('skip'),
+                $request->get('limit')
+            );
+        }
+        
+        
         return $this->sendResponse(
             UserResource::collection($users),
             __('messages.retrieved', ['model' => __('models/users.plural')])

@@ -79,7 +79,7 @@ class Establishment extends Model
         'id' => 'integer',
         'enabled' => 'boolean',
         'category_id' => 'integer',
-        'subcategory_id' => 'integer',
+        'subcategory_id' => 'string',
         'name' => 'string',
         'logo' => 'string',
         'stepping' => 'integer',

@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Requests\API\CreateTurnoAPIRequest;
 use App\Http\Requests\API\UpdateTurnoAPIRequest;
 use App\Models\Turno;
+use App\Models\Session;
+use App\Models\Resource;
+use App\Models\StatusTurno;
+use App\Models\User;
 use App\Repositories\TurnoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -40,9 +44,19 @@ class TurnoAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
+         foreach ($turnos as $key => $turno) {
+            $session = Session::find($turno['session_id']);
+            $resourceName = Resource::find($turno['resource_id'])['name'];
+            $statusName = StatusTurno::find($turno['status_turno_id'])['name'];
+            $user = User::find($turno['user_id']);
+            $turnos[$key]['user_name'] = $user['name'].' '.$user['lastname'];
+            $turnos[$key]['resource_name'] = $resourceName;
+            $turnos[$key]['status_name'] = $statusName;
+            $turnos[$key]['session_name'] = $session['name']; 
+            $turnos[$key]['color'] = $session['color'];
+        }
 
-        return $this->sendResponse(
-            TurnoResource::collection($turnos),
+        return $this->sendResponse($turnos,
             __('messages.retrieved', ['model' => __('models/turnos.plural')])
         );
     }
@@ -58,7 +72,6 @@ class TurnoAPIController extends AppBaseController
     public function store(CreateTurnoAPIRequest $request)
     {
         $input = $request->all();
-
         $turno = $this->turnoRepository->create($input);
 
         return $this->sendResponse(

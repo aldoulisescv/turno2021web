@@ -6,6 +6,7 @@ use App\Http\Requests\API\CreateResourceAPIRequest;
 use App\Http\Requests\API\UpdateResourceAPIRequest;
 use App\Models\Resource;
 use App\Models\RelationResourceSession;
+use App\Models\Session;
 use App\Repositories\ResourceRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
@@ -45,6 +46,10 @@ class ResourceAPIController extends AppBaseController
             $relation =RelationResourceSession::where('resource_id',$resource['id'])->get();
             $existentes = array_column( $relation->toArray(),'session_id');
             $resources[$key]['sesiones'] = $existentes;
+            $sessions = Session::whereIn('id', $existentes)->get();
+            $sessionsname = array_column($sessions->toArray(), 'name');
+            $sessionsname = implode(',',$sessionsname);
+            $resources[$key]['sessionesnames'] = $sessionsname;
         }
 
         return $this->sendResponse($resources, 'Resources retrieved successfully');

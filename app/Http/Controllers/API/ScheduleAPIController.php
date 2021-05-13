@@ -36,15 +36,24 @@ class ScheduleAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $schedules = $this->scheduleRepository->all(
+        $estab = $request->input('establishment_id');
+        if($estab){
+            $resources = Resource::where('establishment_id',$estab)->get();
+            $resources = array_column($resources->toArray(), 'id');
+            $schedules = Schedule::whereIn('resource_id', $resources)->get();
+        }else{
+            $schedules = $this->scheduleRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),
             $request->get('limit')
         );
+        }
+       
         foreach ($schedules as $key => $schedule) {
             $resource =Resource::where('id',$schedule['resource_id'])->first()->name;
             $schedules[$key]['resource_name'] = $resource;
         }
+        // $schedules = $resources;
         return $this->sendResponse($schedules, 'Schedules retrieved successfully');
     }
 

@@ -24,8 +24,7 @@ class UpdateTurnoAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = Turno::$rules;
-        
+        $rules = [  ];
         return $rules;
     }
 }
