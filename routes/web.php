@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Mail\SendPassMail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +19,11 @@ Route::get('/', function () {
 });
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/mail', function () {
+    Mail::to('franco@email.com')->send(new SendPassMail());
+    return new SendPassMail();
 });
 Auth::routes(['verify' => true, 'register' => true]);
 

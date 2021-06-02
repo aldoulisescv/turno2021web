@@ -5,15 +5,31 @@ namespace App\Http\Controllers\API;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\Establishment;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendPassMail;
 
 class AuthController extends  AppBaseController
 {
     public function register(Request $request)
     {
-        
+        $input = $request->all();
+        if(isset($input['sendemailpass']) && $input['sendemailpass']){
+            $estab = Establishment::find($input['establishment_id']);
+            $mailData = array(
+                'estabname'     => $estab->name,
+                'name'     => $input['name'] . ' ' . $input['lastname'] ,
+                'email'     => $input['email'],
+                'phone'     => $input['phone'],
+                'pass'     => $input['password'],
+               );
+            Mail::to($input['email'])->send(new SendPassMail($mailData));
+
+           
+        }
         $validator = Validator::make($request->all(), array(
             
             'name' => ['required', 'string', 'max:255'],
@@ -39,6 +55,7 @@ class AuthController extends  AppBaseController
             if($input['role'])
                 $user->assignRole($input['role']);
             $user->sendEmailVerificationNotification();
+            
             return response([ 'success'=>true,'data' => $user]);
         }
         

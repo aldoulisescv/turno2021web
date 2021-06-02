@@ -54,6 +54,6 @@ class VerificationController extends Controller
         if ($user->markEmailAsVerified())
             event(new Verified($user));
 
-        return redirect($this->redirectPath())->with('verified', true);
+        return redirect($this->redirectPath())->with('verified', true)->with('message', 'Su cuenta ha sido verificada, ya puede comenzar a utilizar Turno!');
     }
 }
