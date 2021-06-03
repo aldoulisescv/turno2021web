@@ -37,7 +37,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout')->except('outwelcome');
+        $this->middleware('guest')->except(['outwelcome','logout']);
     }
     //App\Http\Controllers\Auth\LoginController.php
 
