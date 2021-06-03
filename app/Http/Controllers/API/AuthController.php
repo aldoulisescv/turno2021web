@@ -97,4 +97,15 @@ class AuthController extends  AppBaseController
         }
         return response(['message' => 'Successfully logged out']);
     }
+    public function outwelcome($message)
+    {        
+        dd($message);
+        if (Auth::check()) {
+            Auth::user()->AauthAcessToken()->delete();
+        }
+        if ($message) {
+            return redirect('welcome')->with($message);
+        }
+        return response(['message' => 'Successfully logged out']);
+    }
 }

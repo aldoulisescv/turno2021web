@@ -14,18 +14,15 @@ use App\Mail\SendPassMail;
 */
 
 Route::get('/', function () {
-    return redirect('/home');
+    return redirect('/welcome');
     // Route::view('/login', 'home');
 });
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/mail', function () {
-    Mail::to('franco@email.com')->send(new SendPassMail());
-    return new SendPassMail();
-});
-Auth::routes(['verify' => true, 'register' => true]);
+Route::get('/outwelcome', [App\Http\Controllers\Auth\LoginController::class, 'outwelcome']);
+Auth::routes(['verify' => true, 'register' => false]);
 
 Route::middleware(['auth'])->group(function(){
     // Route::group(['middleware' => ['role:super_admin']], function () {

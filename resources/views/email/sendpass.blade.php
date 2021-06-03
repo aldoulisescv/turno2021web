@@ -1,5 +1,5 @@
 @component('mail::message')
-<img src="{{ asset('/storage/logonombre.png' ) }}" > 
+<img src="http://turno.mx/storage/logonombre.png" > 
 
 Hola, Bienvenido a Turno
 

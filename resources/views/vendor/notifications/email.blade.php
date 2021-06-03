@@ -1,9 +1,7 @@
 @component('mail::message')
 {{-- Greeting --}}
 
-<br>
 <img src="{{ asset('/storage/logonombre.png' ) }}" > 
-<br>
 
 
 @if (! empty($greeting))

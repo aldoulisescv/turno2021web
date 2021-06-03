@@ -29,6 +29,8 @@ class RouteServiceProvider extends ServiceProvider
     public const OUT = '/logout';
     public const WELCOME = '/welcome';
 
+    public const OUT_WELCOME = '/outwelcome';
+
     /**
      * The controller namespace for the application.
      *
