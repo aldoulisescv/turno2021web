@@ -32,6 +32,22 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        View::composer(['helps.fields'], function ($view) {
+            $userItems = User::pluck('name','id')->toArray();
+            $view->with('userItems', $userItems);
+        });
+        View::composer(['helps.fields'], function ($view) {
+            $status_turnoItems = StatusTurno::pluck('name','id')->toArray();
+            $view->with('status_turnoItems', $status_turnoItems);
+        });
+        View::composer(['helps.fields'], function ($view) {
+            $userItems = User::pluck('name','id')->toArray();
+            $view->with('userItems', $userItems);
+        });
+        View::composer(['helps.fields'], function ($view) {
+            $status_turnoItems = StatusTurno::pluck('name','id')->toArray();
+            $view->with('status_turnoItems', $status_turnoItems);
+        });
         View::composer(['roles.fields'], function ($view) {
             $permissionItems = Permission::pluck('name','id')->toArray();
             $view->with('permissionItems', $permissionItems);

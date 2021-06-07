@@ -50,3 +50,7 @@ Route::middleware(['auth:api'])->group(function(){
 
 
 // Route::resource('blocked_dates', App\Http\Controllers\API\BlockedDatesAPIController::class);
+
+
+
+Route::resource('helps', App\Http\Controllers\API\HelpAPIController::class);

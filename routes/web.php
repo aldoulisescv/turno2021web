@@ -48,3 +48,7 @@ Route::middleware(['auth'])->group(function(){
 
 
 Route::resource('blockedDates', App\Http\Controllers\BlockedDatesController::class);
+
+
+
+Route::resource('helps', App\Http\Controllers\HelpController::class);

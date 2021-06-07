@@ -77,3 +77,9 @@ php artisan infyom.scaffold:views Category --fieldsFile=/Applications/MAMP/htdoc
 php artisan infyom.api:controller Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json 
 
 php artisan infyom:api_scaffold StatusTurno --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/StatusTurno.json --skip=migration
+
+php artisan infyom:api_scaffold Help --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Help.json
+
+php artisan migrate:rollback --path=database/migrations/2021_06_07_224914_create_helps_table.php
+
+php artisan infyom:rollback Help api_scaffold

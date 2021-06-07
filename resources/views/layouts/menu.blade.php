@@ -81,3 +81,10 @@
         <span>@lang('models/blockedDates.plural')</span>
     </a>
 </li>
+
+<li class="nav-item {{ Request::is('helps*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('helps.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>@lang('models/helps.plural')</span>
+    </a>
+</li>
