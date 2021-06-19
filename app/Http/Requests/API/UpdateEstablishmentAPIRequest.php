@@ -24,7 +24,7 @@ class UpdateEstablishmentAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = Establishment::$rules;
+        $rules = [  ];
         
         return $rules;
     }

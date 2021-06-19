@@ -51,7 +51,6 @@ class UserAPIController extends AppBaseController
             );
         }
         
-        
         return $this->sendResponse(
             UserResource::collection($users),
             __('messages.retrieved', ['model' => __('models/users.plural')])
@@ -90,13 +89,24 @@ class UserAPIController extends AppBaseController
     {
         /** @var User $User */
         $User = $this->UserRepository->find($id);
-
+        
         if (empty($User)) {
             return $this->sendError(
                 __('messages.not_found', ['model' => __('models/users.singular')])
             );
         }
-
+        $estabs = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'admin');
+            }
+        )->where('ref_code',$User->user_name)->where('email_verified_at','<>', '')->get();
+        $clientes = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'client');
+            }
+        )->where('ref_code',$User->user_name)->where('email_verified_at','<>', '')->get();
+        $User['estabs']=count($estabs);
+        $User['clients']=count($clientes);
         return $this->sendResponse(
             new UserResource($User),
             __('messages.retrieved', ['model' => __('models/users.singular')])

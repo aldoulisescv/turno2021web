@@ -35,6 +35,18 @@ class BlockedDatesAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $from= $request->input('from');
+        $to= $request->input('to');
+        if($from!=null && $to!=null){
+            
+            $res = BlockedDates::whereBetween('date', [$from, $to])->get();
+            return $this->sendResponse(
+                BlockedDatesResource::collection($res),
+                __('messages.retrieved', ['model' => __('models/blockedDates.plural')])
+            );
+        }
+
+
         $blockedDates = $this->blockedDatesRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),

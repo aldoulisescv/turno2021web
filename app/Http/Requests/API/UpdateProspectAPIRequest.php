@@ -24,7 +24,7 @@ class UpdateProspectAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = Prospect::$rules;
+        $rules = [];
         
         return $rules;
     }

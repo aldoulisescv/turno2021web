@@ -65,6 +65,11 @@ class ProspectAPIController extends AppBaseController
             $request->get('skip'),
             $request->get('limit')
         );
+        $prospects = $prospects->sort(function ($a, $b) {
+                return strtotime($a->created_at) < strtotime($b->created_at);
+            
+        });
+        
         return $this->sendResponse(
             ProspectResource::collection($prospects),
             __('messages.retrieved', ['model' => __('models/prospects.plural')])

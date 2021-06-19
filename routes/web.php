@@ -42,13 +42,13 @@ Route::middleware(['auth'])->group(function(){
         Route::resource('turnos', App\Http\Controllers\TurnoController::class);
 
         Route::resource('prospects', App\Http\Controllers\ProspectController::class);
-    // });
-
-});
-
 
 Route::resource('blockedDates', App\Http\Controllers\BlockedDatesController::class);
 
 
 
 Route::resource('helps', App\Http\Controllers\HelpController::class);
+    // });
+
+});
+

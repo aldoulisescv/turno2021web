@@ -41,16 +41,17 @@ Route::middleware(['auth:api'])->group(function(){
 
 
     Route::resource('establishments', EstablishmentAPIController::class);
-    Route::resource('users', UserAPIController::class);
+   
 
     Route::resource('turnos', TurnoAPIController::class);
     Route::resource('categories', CategoryAPIController::class);
     Route::resource('statusTurnos', StatusTurnoAPIController::class);
+
+    Route::resource('helps', HelpAPIController::class);
+    Route::resource('users', UserAPIController::class);
+
 });
 
-
-// Route::resource('blocked_dates', App\Http\Controllers\API\BlockedDatesAPIController::class);
-
+Route::resource('blocked_dates', BlockedDatesAPIController::class);
 
 
-Route::resource('helps', App\Http\Controllers\API\HelpAPIController::class);
