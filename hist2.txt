@@ -83,3 +83,9 @@ php artisan infyom:api_scaffold Help --fieldsFile=/Applications/MAMP/htdocs/turn
 php artisan migrate:rollback --path=database/migrations/2021_06_07_224914_create_helps_table.php
 
 php artisan infyom:rollback Help api_scaffold
+
+
+hacer el link de imagenes
+
+
+ln -s /home/hnqyrukx/turno2021/storage/app/public /home/hnqyrukx/public_html/

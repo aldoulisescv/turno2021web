@@ -69,9 +69,9 @@ class ProspectAPIController extends AppBaseController
                 return strtotime($a->created_at) < strtotime($b->created_at);
             
         });
-        
+        $prospects = array_slice($prospects->toArray(),0,10);
         return $this->sendResponse(
-            ProspectResource::collection($prospects),
+           $prospects,
             __('messages.retrieved', ['model' => __('models/prospects.plural')])
         );
     }

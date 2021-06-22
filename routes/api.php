@@ -37,7 +37,6 @@ Route::middleware(['auth:api'])->group(function(){
     Route::resource('status_turnos', StatusTurnoAPIController::class);
 
 
-    Route::resource('prospects', ProspectAPIController::class);
 
 
     Route::resource('establishments', EstablishmentAPIController::class);
@@ -53,5 +52,6 @@ Route::middleware(['auth:api'])->group(function(){
 });
 
 Route::resource('blocked_dates', BlockedDatesAPIController::class);
+Route::resource('prospects', ProspectAPIController::class);
 
 
