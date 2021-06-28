@@ -49,9 +49,10 @@ Route::middleware(['auth:api'])->group(function(){
     Route::resource('helps', HelpAPIController::class);
     Route::resource('users', UserAPIController::class);
 
-});
-
 Route::resource('blocked_dates', BlockedDatesAPIController::class);
 Route::resource('prospects', ProspectAPIController::class);
+Route::get('/prospectos','ProspectAPIController@prospects');
+});
+
 
 

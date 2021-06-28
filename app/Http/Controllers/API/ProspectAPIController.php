@@ -51,6 +51,21 @@ class ProspectAPIController extends AppBaseController
             'success', '200'
         );
 	}
+    public function prospects(){
+        // $req = Request::create('/my/url', 'POST', $params);
+        $req = Request::create('/api/prospects', 'GET');
+        $res = app()->handle($req);
+        $responseBody = $res->getContent();
+        $p = json_decode($responseBody);
+        //  $p = $p['data'];
+        $s['pros']=$p->data;
+        $s['es']=$p->data;
+        return $this->sendResponse(
+             $s,
+             __('messages.retrieved', ['model' => __('models/prospects.plural')])
+         );
+        dd($responseBody);
+    }
     /**
      * Display a listing of the Prospect.
      * GET|HEAD /prospects
@@ -91,7 +106,6 @@ class ProspectAPIController extends AppBaseController
         $nextId = $statement[0]->Auto_increment;
         $input['image']='prospects/prospect_'.$nextId.'.png';
         $prospect = $this->prospectRepository->create($input);
-
         return $this->sendResponse(
             new ProspectResource($prospect),
             __('messages.saved', ['model' => __('models/prospects.singular')])

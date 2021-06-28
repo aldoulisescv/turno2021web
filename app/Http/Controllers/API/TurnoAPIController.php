@@ -8,11 +8,14 @@ use App\Models\Turno;
 use App\Models\Session;
 use App\Models\Resource;
 use App\Models\StatusTurno;
+use App\Models\Establishment;
 use App\Models\User;
 use App\Repositories\TurnoRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\TurnoResource;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TurnoMail;
 use Response;
 
 /**
@@ -73,7 +76,21 @@ class TurnoAPIController extends AppBaseController
     {
         $input = $request->all();
         $turno = $this->turnoRepository->create($input);
-
+        $estab = Establishment::find($turno['establishment_id']);
+        $session = Session::find($turno['session_id']);
+        $status = StatusTurno::find($turno['status_turno_id']);
+        $user = User::find($turno['user_id']);
+        $mailData = array(
+            'estabname'     => $estab->name,
+            'name'     => $user->name,
+            'email'     => $turno->email,
+            'asunto'     => 'Tiene un nuevo Turno',
+            'status_turno_name'     => $status->name,
+            'accion'     => 'creó',
+            'hora_inicio'     => date_format($turno->date, 'Y-m-d')  . ' ' . $turno->start_time,
+            'session_name'     => $session->name,
+           );
+        Mail::to($turno['email'])->send(new TurnoMail($mailData));
         return $this->sendResponse(
             new TurnoResource($turno),
             __('messages.saved', ['model' => __('models/turnos.singular')])
@@ -128,7 +145,21 @@ class TurnoAPIController extends AppBaseController
         }
 
         $turno = $this->turnoRepository->update($input, $id);
-
+        $estab = Establishment::find($turno['establishment_id']);
+        $session = Session::find($turno['session_id']);
+        $status = StatusTurno::find($turno['status_turno_id']);
+        $user = User::find($turno['user_id']);
+        $mailData = array(
+            'estabname'     => $estab->name,
+            'name'     => $user->name,
+            'email'     => $turno->email,
+            'asunto'     => 'El estado de su turno ha cambiado',
+            'status_turno_name'     => $status->name,
+            'accion'     => 'editó',
+            'hora_inicio'     => date_format($turno->date, 'Y-m-d') . ' ' . $turno->start_time,
+            'session_name'     => $session->name,
+           );
+        Mail::to($turno['email'])->send(new TurnoMail($mailData));
         return $this->sendResponse(
             new TurnoResource($turno),
             __('messages.updated', ['model' => __('models/turnos.singular')])

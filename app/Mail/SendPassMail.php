@@ -37,11 +37,11 @@ class SendPassMail extends Mailable
         'pass'     => $this->mailData['pass'],
     );
 
-return $this->markdown('email.sendpass')
-->subject('Bienvenida')
-  ->with([
-      'data' => $input,
-    ]);
+    return $this->markdown('email.sendpass')
+    ->subject('Bienvenida')
+    ->with([
+        'data' => $input,
+        ]);
         // return $this->markdown('email.sendpass');
     }
 }

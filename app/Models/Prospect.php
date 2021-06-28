@@ -82,7 +82,7 @@ class Prospect extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
+        'name' => 'required|unique:prospects',
         'image' => 'required',
         'latitude' => 'required',
         'longitude' => 'required',
