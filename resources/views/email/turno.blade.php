@@ -1,5 +1,5 @@
 @component('mail::message')
-<img src="http://turno.mx/storage/logonombre.png" > 
+<img src="http://turno.mx/img/logonombre.png" > 
 
 Hola, Usted tiene un turno {{$data['status_turno_name']}}
 
