@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Turno App</title>
+        <title>Turno</title>
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
@@ -51,7 +51,7 @@
                 <div class="row h-100">
                     <div class="col-lg-7 my-auto">
                         <div class="header-content mx-auto">
-                            <h1 class="mb-5">Turno es una app para la administración de tus citas, te hará aprovechar tu tiempo al máximo en lo realmente importante</h1>
+                            <h1 class="mb-5">Turno es una app para la administración de tus citas previas, te hará aprovechar tu tiempo al máximo en lo realmente importante</h1>
                             <a class="btn btn-outline-light py-3 px-4 rounded-pill js-scroll-trigger" href="#download">Comienza ahora gratis!</a>
                         </div>
                     </div>
@@ -74,10 +74,10 @@
                 <div class="row">
                     <div class="col-md-8 mx-auto">
                         <h2 class="section-heading">Se parte de la innovación con tu agenda digital!</h2>
-                        <p>Nuestra app de estará disponible para cualquier dispositivo móvil! Descargala y comienza ahora!</p>
+                        <p>Nuestra app de está disponible para cualquier dispositivo móvil! Descargala y comienza ahora!</p>
                         <div class="badges">
-                            <a class="badge-link" href="#!"><img src="{{ asset('/img/google-play-badge.svg' ) }}" alt="..." /></a>
-                            <a class="badge-link" href="#!"><img src="{{ asset('/img/app-store-badge.svg' ) }}" alt="..." /></a>
+                            <a class="badge-link" href="https://play.google.com/store/apps/details?id=com.velezsoft.turnoAdmin"><img src="{{ asset('/img/google-play-badge.svg' ) }}" alt="..." /></a>
+                            <!-- <a class="badge-link" href="#!"><img src="{{ asset('/img/app-store-badge.svg' ) }}" alt="..." /></a> -->
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,22 @@
                     </div>
                     <div class="col-lg-8 my-auto">
                         <div class="container-fluid">
-                            
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="feature-item">
+                                    <i class="bi bi-people"></i>
+                                        <h3>Gestiona los turnos</h3>
+                                        <p class="text-muted">Administra las citas previas de tus espacios!</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="feature-item">
+                                    <i class="bi bi-pin-map-fill"></i>
+                                        <h3>Posicionamiento</h3>
+                                        <p class="text-muted">Tus clientes te encontrarán en el mapa o en una lista con facilidad cuando estén cerca de ti o te busquen</p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="feature-item">
@@ -164,13 +179,18 @@
                 </h2>
                 <ul class="list-inline list-social">
                     <li class="list-inline-item social-twitter">
-                        <a href="#!"><i class="fab fa-twitter"></i></a>
+                        <a href="https://twitter.com/turnomx"><i class="fab fa-twitter"></i></a>
                     </li>
                     <li class="list-inline-item social-facebook">
-                        <a href="#!"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/turno.mx"><i class="fab fa-facebook-f"></i></a>
                     </li>
-                    <li class="list-inline-item social-google-plus">
-                        <a href="#!"><i class="fab fa-google-plus-g"></i></a>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/turno.mx"><img src="/img/logoinstagram.png" style="
+
+    vertical-align: top;
+    height: 80px;
+    width: 80px;
+"></a>
                     </li>
                 </ul>
             </div>

@@ -11,7 +11,7 @@ Tiempo Inicio: <b>{{$data['hora_inicio']}} </b> <br>
 Tipo de Sesión: <b>{{$data['session_name']}} </b> <br>
 
 
-<!-- Te invitamos a descargar la aplicación y cambiar tu contraseña.  -->
+Te invitamos a descargar la aplicación y cambiar tu contraseña. 
 
 <!-- @component('mail::button', ['url' => ''])
 Descargar 
