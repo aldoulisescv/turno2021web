@@ -57,7 +57,7 @@ class CronController extends Controller
         echo "Running a blocking loop\n";
         Ev::run();
         echo "END\n";
-    } catch (Exception $e) {
+    } catch (\Throwable $e) {
         // exception is raised and it'll be handled here
          echo $e->getMessage();
       }
