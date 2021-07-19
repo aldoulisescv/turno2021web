@@ -9,7 +9,14 @@ class CronController extends Controller
     public function everyHour()
     {
         echo "null";
-        version:// Create and start timer firing after 2 seconds
+        try {
+            // code
+           
+            // if something is not as expected
+                // throw exception using the "throw" keyword
+           
+            // code, it won't be executed if the above exception is thrown
+         
         $w1 = new EvTimer(2, 0, function () {
             echo "2 seconds elapsed\n";
         });
@@ -50,6 +57,10 @@ class CronController extends Controller
         echo "Running a blocking loop\n";
         Ev::run();
         echo "END\n";
+    } catch (Exception $e) {
+        // exception is raised and it'll be handled here
+         echo $e->getMessage();
+      }
         return ;
     }
 }
