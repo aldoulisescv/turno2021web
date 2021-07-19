@@ -23,6 +23,7 @@ Route::get('/welcome', function () {
 
 Route::get('/outwelcome', [App\Http\Controllers\Auth\LoginController::class, 'outwelcome']);
 Auth::routes(['verify' => true, 'register' => false]);
+Route::get('/hora', [App\Http\Controllers\CronController::class, 'everyHour']);
 
 Route::middleware(['auth'])->group(function(){
     // Route::group(['middleware' => ['role:super_admin']], function () {
