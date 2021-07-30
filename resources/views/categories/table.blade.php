@@ -3,6 +3,7 @@
         <thead>
             <tr>
                 <th>@lang('models/categories.fields.name')</th>
+        <th>@lang('models/categories.fields.image')</th>
         <th>@lang('models/categories.fields.parentCategory')</th>
                 <th colspan="3">@lang('crud.action')</th>
             </tr>
@@ -11,7 +12,8 @@
         @foreach($categories as $category)
             <tr>
                 <td>{{ $category->name }}</td>
-                <td>{{  $categoryItems[$category->parentCategory] ?? '' }}</td>
+            <td>{{ $category->image }}</td>
+            <td>{{  $categoryItems[$category->parentCategory] ?? '' }}</td>
                 <td>
                     {!! Form::open(['route' => ['categories.destroy', $category->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

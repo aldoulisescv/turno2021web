@@ -21,9 +21,9 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">
-    <img class="navbar-brand-full" src="/storage/logonombre.png"  height="60"
+    <img class="navbar-brand-full" src="/img/logonombre.png"  height="60"
              alt="Turno">
-        <img class="navbar-brand-minimized" src="/storage/logo.png"  width="30"
+        <img class="navbar-brand-minimized" src="/img/logo.png"  width="30"
              height="30" alt="Turno">
     </a>
     <button class="navbar-toggler sidebar-minimizer brand-minimizer d-md-down-none" type="button" data-toggle="sidebar-lg-show">

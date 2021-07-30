@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class Category
  * @package App\Models
- * @version February 16, 2021, 6:49 pm UTC
+ * @version July 14, 2021, 6:58 pm UTC
  *
  * @property string $name
+ * @property string $image
  * @property integer $parentCategory
  */
 class Category extends Model
@@ -29,6 +30,7 @@ class Category extends Model
 
     public $fillable = [
         'name',
+        'image',
         'parentCategory'
     ];
 
@@ -40,6 +42,7 @@ class Category extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
+        'image' => 'string',
         'parentCategory' => 'integer'
     ];
 

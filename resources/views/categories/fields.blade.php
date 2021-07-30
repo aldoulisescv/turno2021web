@@ -4,6 +4,12 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Image Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('image', __('models/categories.fields.image').':') !!}
+    {!! Form::text('image', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Parentcategory Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('parentCategory', __('models/categories.fields.parentCategory').':') !!}

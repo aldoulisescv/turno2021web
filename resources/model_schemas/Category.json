@@ -24,6 +24,18 @@
         "inView": true
     },
     {
+        "name": "image",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
         "name": "parentCategory",
         "dbType": "integer",
         "htmlType": "selectTable:categories:name,id",

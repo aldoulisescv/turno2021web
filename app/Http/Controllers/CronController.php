@@ -1,66 +1,60 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Turno;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class CronController extends Controller
 {
-    public function everyHour()
-    {
-        echo "null";
+    public function every5minutes(){
         try {
-            // code
-           
-            // if something is not as expected
-                // throw exception using the "throw" keyword
-           
-            // code, it won't be executed if the above exception is thrown
-         
-        $w1 = new EvTimer(2, 0, function () {
-            echo "2 seconds elapsed\n";
-        });
-        
-        // Create and launch timer firing after 2 seconds repeating each second
-        // until we manually stop it
-        $w2 = new EvTimer(2, 1, function ($w) {
-            echo "is called every second, is launched after 2 seconds\n";
-            echo "iteration = ", Ev::iteration(), PHP_EOL;
-        
-            // Stop the watcher after 5 iterations
-            Ev::iteration() == 5 and $w->stop();
-            // Stop the watcher if further calls cause more than 10 iterations
-            Ev::iteration() >= 10 and $w->stop();
-        });
-        
-        // Create stopped timer. It will be inactive until we start it ourselves
-        $w_stopped = EvTimer::createStopped(10, 5, function($w) {
-            echo "Callback of a timer created as stopped\n";
-        
-            // Stop the watcher after 2 iterations
-            Ev::iteration() >= 2 and $w->stop();
-        });
-        
-        // Loop until Ev::stop() is called or all of watchers stop
-        Ev::run();
-        
-        // Start and look if it works
-        $w_stopped->start();
-        echo "Run single iteration\n";
-        Ev::run(Ev::RUN_ONCE);
-        
-        echo "Restart the second watcher and try to handle the same events, but don't block\n";
-        $w2->again();
-        Ev::run(Ev::RUN_NOWAIT);
-        
-        $w = new EvTimer(10, 0, function() {});
-        echo "Running a blocking loop\n";
-        Ev::run();
-        echo "END\n";
-    } catch (\Throwable $e) {
-        // exception is raised and it'll be handled here
-         echo $e->getMessage();
-      }
+
+            $time = date('h:i');
+            $date = date('y-m-d');
+            $this->aviso30minAntes();
+            // $menos5 =date("H:i", strtotime ( '-5 minutes' , strtotime ($time) ) );        
+            // $turnos =  Turno::where('date', '=', $date)
+            //             ->whereTime('start_time', '<=', \Carbon\Carbon::parse($time))
+            //             ->whereTime('start_time', '>', \Carbon\Carbon::parse($menos5))
+            //             ->where('status_turno_id', 3)
+            //             ->get();
+            // $idturnos = array_column($turnos->toArray(), 'id');
+            
+            // print_r($date.' '.$time.' '.json_encode($idturnos));
+            // if(count($idturnos) >0){
+            //     $jsonIdTurnos = (json_encode($idturnos));
+            //     \Storage::disk('local')->append('file.txt', $date.' '.$time.' '.$jsonIdTurnos);
+            // }
+        } catch (\Throwable $e) {
+            echo $e->getMessage();
+            \Storage::disk('local')->append('file.txt', $date.' '.$time.' '.$e->getMessage());
+        }
         return ;
     }
+    public function aviso30minAntes(){
+            // $time = date('h:i', strtotime('11:15'));
+            // $date = date('Y-m-d', strtotime('2021-07-31'));
+            $time = date('h:i');
+            $date = date('Y-m-d');
+            $mas30 = date("H:i", strtotime ( '+30 minutes' , strtotime ($time) ) );
+            $mas25 =date("H:i", strtotime ( '+25 minutes' , strtotime ($time) ) );        
+            $turnos =  Turno::where('date', '=', $date)
+                        ->whereTime('start_time', '<=', \Carbon\Carbon::parse($mas30))
+                        ->whereTime('start_time', '>', \Carbon\Carbon::parse($mas25))
+                        ->where('status_turno_id', 3)
+                        ->get();
+            $idturnos = array_column($turnos->toArray(), 'id');
+            $userids = array_column($turnos->toArray(), 'user_id');
+            $cnt = new NotifyController;
+            $tokens = $cnt->getTokenIdsUsers($userids);
+            $message = $cnt->notify('Turno Próximo', 'Dentro de 30 minutos tienes un turno por atender', $tokens, 'high_importance_channel', null);
+            if(count($idturnos) >0){
+                $jsonIdTurnos = (json_encode($idturnos));
+                \Storage::disk('local')->append('file.txt', $date.' '.$time.' '.$jsonIdTurnos);
+            }
+    }
+    
+    
 }

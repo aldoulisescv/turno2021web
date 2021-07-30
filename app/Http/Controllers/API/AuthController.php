@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendPassMail;
-
+use App\Http\Controllers\CronController;
 class AuthController extends  AppBaseController
 {
     public function register(Request $request)
@@ -55,7 +55,16 @@ class AuthController extends  AppBaseController
             if($input['role'])
                 $user->assignRole($input['role']);
             $user->sendEmailVerificationNotification();
-            
+
+            $super_admins = User::whereHas(
+                'roles', function($q){
+                    $q->where('name', 'super_admin');
+                }
+            )->get();
+            $users = array_column($super_admins->toArray(), 'id');
+            $cnt = new NotifyController;
+            $tokens = $cnt->getTokenIdsUsers($users);
+            $message = $cnt->notify('Nuevo Usuario', $user->email, $tokens, 'high_importance_channel', null);
             return response([ 'success'=>true,'data' => $user]);
         }
         
@@ -87,7 +96,9 @@ class AuthController extends  AppBaseController
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
         $user['access_token']  = $accessToken;
-        return response(['success'=>true,'data' => $user]);
+        $cnt = new CronController;
+        $tokens = $cnt->getTokenIdsUsers([9,1]);
+        return response(['success'=>true,'data' => $tokens]);
 
     }
     public function logout()

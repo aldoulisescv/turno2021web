@@ -4,6 +4,12 @@
     <p>{{ $category->name }}</p>
 </div>
 
+<!-- Image Field -->
+<div class="form-group">
+    {!! Form::label('image', __('models/categories.fields.image').':') !!}
+    <p>{{ $category->image }}</p>
+</div>
+
 <!-- Parentcategory Field -->
 <div class="form-group">
     {!! Form::label('parentCategory', __('models/categories.fields.parentCategory').':') !!}

@@ -16,7 +16,7 @@ class AddFieldsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('enabled')->default(true);
             $table->integer('establishment_id')->nullable()->unsigned();	
-            $table->string('api_token', 60)->unique()->nullable();
+            $table->string('api_token', 255)->unique()->nullable();
             $table->string('user_name')->default('')->unique();	
             $table->string('ref_code')->nullable();
             $table->string('lastname')->nullable();

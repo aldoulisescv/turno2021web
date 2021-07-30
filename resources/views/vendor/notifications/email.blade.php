@@ -1,7 +1,7 @@
 @component('mail::message')
 {{-- Greeting --}}
 
-<img src="{{ asset('/storage/logonombre.png' ) }}" > 
+<img src="{{ asset('/img/logonombre.png' ) }}" > 
 
 
 @if (! empty($greeting))
@@ -48,7 +48,7 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-<img src="{{ asset('/storage/tiendasAplicaciones.png' ) }}" > 
+<img src="{{ asset('/img/tiendasAplicaciones.png' ) }}" > 
 @lang('Bienvenido a la innovación'),<br>
 {{ config('app.name') }}
 @endif

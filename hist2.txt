@@ -84,8 +84,21 @@ php artisan migrate:rollback --path=database/migrations/2021_06_07_224914_create
 
 php artisan infyom:rollback Help api_scaffold
 
+php artisan infyom:rollback Category api_scaffold
+php artisan infyom:api_scaffold Category --fieldsFile=/Applications/MAMP/htdocs/turno2021/resources/model_schemas/Category.json --skip=migration
+
 
 hacer el link de imagenes
 
 
-ln -s /home/hnqyrukx/turno2021/storage/app/public /home/hnqyrukx/public_html/
+ln -s /home/hnqyrukx/turno2021/storage/app/public /home/hnqyrukx/public_html/public
+
+ln -s /Applications/MAMP/htdocs/migolf/storage/app/public /Applications/MAMP/htdocs/migolf/public
+
+SELECT * FROM turnos WHERE 1
+and CAST(start_time as time) <=time('11:45')
+AND CAST(start_time as time) > time('11:40')
+and timestamp(date) = timestamp('2021-07-29')
+AND status_turno_id = 3
+
+

@@ -23,9 +23,10 @@ Route::get('/welcome', function () {
 
 Route::get('/outwelcome', [App\Http\Controllers\Auth\LoginController::class, 'outwelcome']);
 Auth::routes(['verify' => true, 'register' => false]);
-Route::get('/hora', [App\Http\Controllers\CronController::class, 'everyHour']);
+Route::get('/cron', [App\Http\Controllers\CronController::class, 'every5minutes']);
+// Route::get('/push', [App\Http\Controllers\NotifyController::class, 'enviarNotificacion']);
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth','role:super_admin' ])->group(function(){
     // Route::group(['middleware' => ['role:super_admin']], function () {
        
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
