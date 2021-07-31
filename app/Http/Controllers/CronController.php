@@ -47,9 +47,9 @@ class CronController extends Controller
                         ->get();
             $idturnos = array_column($turnos->toArray(), 'id');
             $userids = array_column($turnos->toArray(), 'user_id');
-            $cnt = new NotifyController;
-            $tokens = $cnt->getTokenIdsUsers($userids);
-            $message = $cnt->notify('Turno Próximo', 'Dentro de 30 minutos tienes un turno por atender', $tokens, 'high_importance_channel', null);
+            $ntify = new NotifyController;
+            $tokens = $ntify->getTokenIdsUsers($userids);
+            $message = $ntify->notify('Turno Próximo', 'Dentro de 30 minutos tienes un turno por atender', $tokens, 'high_importance_channel', null);
             if(count($idturnos) >0){
                 $jsonIdTurnos = (json_encode($idturnos));
                 \Storage::disk('local')->append('file.txt', $date.' '.$time.' '.$jsonIdTurnos);

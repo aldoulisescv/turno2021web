@@ -96,9 +96,7 @@ class AuthController extends  AppBaseController
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
         $user['access_token']  = $accessToken;
-        $cnt = new CronController;
-        $tokens = $cnt->getTokenIdsUsers([9,1]);
-        return response(['success'=>true,'data' => $tokens]);
+        return response(['success'=>true,'data' => $user]);
 
     }
     public function logout()

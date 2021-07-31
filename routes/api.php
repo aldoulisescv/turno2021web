@@ -22,16 +22,12 @@ Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::get('/home/{establishment}', 'CallController@home');
 Route::post('/subirimagedata','ProspectAPIController@uploadimage');
 Route::middleware(['auth:api'])->group(function(){
     Route::resource('resources', ResourceAPIController::class);
-
     Route::resource('sessions', SessionAPIController::class);
-
-
     Route::resource('schedules', ScheduleAPIController::class);
-
     Route::resource('relation_resource_sessions', RelationResourceSessionAPIController::class);
 
     Route::resource('status_turnos', StatusTurnoAPIController::class);
@@ -49,9 +45,9 @@ Route::middleware(['auth:api'])->group(function(){
     Route::resource('helps', HelpAPIController::class);
     Route::resource('users', UserAPIController::class);
 
-Route::resource('blocked_dates', BlockedDatesAPIController::class);
-Route::resource('prospects', ProspectAPIController::class);
-Route::get('/prospectos','ProspectAPIController@prospects');
+    Route::resource('blocked_dates', BlockedDatesAPIController::class);
+    Route::resource('prospects', ProspectAPIController::class);
+    Route::get('/prospectos','ProspectAPIController@prospects');
 });
 
 
