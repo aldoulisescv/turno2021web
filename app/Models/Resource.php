@@ -45,11 +45,11 @@ class Resource extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'enabled' => 'boolean',
+        'enabled' => 'integer',
         'establishment_id' => 'integer',
         'name' => 'string',
-        'selectable' => 'boolean',
-        'order_alpha' => 'boolean'
+        'selectable' => 'integer',
+        'order_alpha' => 'integer'
     ];
 
     /**

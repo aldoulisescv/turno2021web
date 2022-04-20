@@ -96,8 +96,8 @@ class Establishment extends Model
         'email' => 'string',
         'phone' => 'string',
         'holidays_extra' => 'string',
-        'holidays_official' => 'boolean',
-        'help_tooltip' => 'boolean'
+        'holidays_official' => 'integer',
+        'help_tooltip' => 'integer'
     ];
 
     /**

@@ -69,7 +69,7 @@ class ResourceAPIController extends AppBaseController
 
         $resource = $this->resourceRepository->create($input);
         $resource_id = $resource->id;
-        $nuevas = $request['seleccionados'];
+        $nuevas = $request['sesiones'];
         $relation =RelationResourceSession::where('resource_id',$resource_id)->get();
         $existentes = array_column( $relation->toArray(),'session_id');
         $guardar = array_diff($nuevas, $existentes);
@@ -144,7 +144,7 @@ class ResourceAPIController extends AppBaseController
 
         $resource = $this->resourceRepository->update($input, $id);
         $resource_id = $id;
-        $nuevas = $request['seleccionados'];
+        $nuevas = $request['sesiones'];
         $relation =RelationResourceSession::where('resource_id',$resource_id)->get();
         $existentes = array_column( $relation->toArray(),'session_id');
         $guardar = array_diff($nuevas, $existentes);

@@ -57,7 +57,7 @@ class Schedule extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'enabled' => 'boolean',
+        'enabled' => 'integer',
         'resource_id' => 'integer',
         'sunday' => 'boolean',
         'monday' => 'boolean',

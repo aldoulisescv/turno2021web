@@ -19,14 +19,17 @@ class AuthController extends  AppBaseController
         $input = $request->all();
         if(isset($input['sendemailpass']) && $input['sendemailpass']){
             $estab = Establishment::find($input['establishment_id']);
-            $mailData = array(
-                'estabname'     => $estab->name,
-                'name'     => $input['name'] . ' ' . $input['lastname'] ,
-                'email'     => $input['email'],
-                'phone'     => $input['phone'],
-                'pass'     => $input['password'],
-               );
-            Mail::to($input['email'])->send(new SendPassMail($mailData));
+            if($estab!=null){
+                $mailData = array(
+                    'estabname'     => $estab->name,
+                    'name'     => $input['name'] . ' ' . $input['lastname'] ,
+                    'email'     => $input['email'],
+                    'phone'     => $input['phone'],
+                    'pass'     => $input['password'],
+                   );
+                Mail::to($input['email'])->send(new SendPassMail($mailData));
+            }
+            
 
            
         }
@@ -51,7 +54,9 @@ class AuthController extends  AppBaseController
             $input = $request->all();
             $input['password'] = Hash::make($input['password']);
             $input['privacy_notice'] = $input['terms'];
+
             $user = User::create($input);
+
             if($input['role'])
                 $user->assignRole($input['role']);
             $user->sendEmailVerificationNotification();
@@ -62,9 +67,9 @@ class AuthController extends  AppBaseController
                 }
             )->get();
             $users = array_column($super_admins->toArray(), 'id');
-            $cnt = new NotifyController;
-            $tokens = $cnt->getTokenIdsUsers($users);
-            $message = $cnt->notify('Nuevo Usuario', $user->email, $tokens, 'high_importance_channel', null);
+            // $cnt = new NotifyController;
+            // $tokens = $cnt->getTokenIdsUsers($users);
+            // $message = $cnt->notify('Nuevo Usuario', $user->email, $tokens, 'high_importance_channel', null);
             return response([ 'success'=>true,'data' => $user]);
         }
         
@@ -95,6 +100,10 @@ class AuthController extends  AppBaseController
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
+        $estab = Establishment::find($user['establishment_id']);
+        if($estab!=null){
+            $user['interval']=$estab->stepping;
+        } 
         $user['access_token']  = $accessToken;
         return response(['success'=>true,'data' => $user]);
 

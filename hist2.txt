@@ -24,8 +24,8 @@ php artisan migrate:rollback --path=/database/migrations/2020_06_15_230853_creat
 php artisan migrate --path=/database/migrations/2020_10_14_173945_create_tokens_table.php
 sftp://172.16.30.104/var/www/vhosts/eants.ndi.mx/database/migrations/
 
-php artisan infyom:api_scaffold Token --fieldsFile=/var/www/vhosts/eants.ndi.mx/resources/model_schemas/Token.json
-php artisan infyom:rollback Device api_scaffold
+php artisan infyom:api_scaffold Speed --fieldsFile=/var/www/eants.ndi.mx/resources/model_schemas/Speed.json
+php artisan infyom:rollback Speed api_scaffold
 
  cd scorefancom/public_html/
 git clone https://github.com/aldouli6/adminScorefan.git .
@@ -100,5 +100,7 @@ and CAST(start_time as time) <=time('11:45')
 AND CAST(start_time as time) > time('11:40')
 and timestamp(date) = timestamp('2021-07-29')
 AND status_turno_id = 3
+
+/Users/developer/flutter/bin/flutter build appbundle   
 
 

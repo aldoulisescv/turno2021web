@@ -65,7 +65,7 @@ class Session extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'enabled' => 'boolean',
+        'enabled' => 'integer',
         'establishment_id' => 'integer',
         'name' => 'string',
         'color' => 'string',

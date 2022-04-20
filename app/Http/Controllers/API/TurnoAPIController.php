@@ -45,6 +45,7 @@ class TurnoAPIController extends AppBaseController
         $from= $request->input('from');
         $to= $request->input('to');
         $stid= $request->input('status_turno_id');
+        $resid =  $request->input('resource_id');
         $turnos = $this->turnoRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),
@@ -53,6 +54,8 @@ class TurnoAPIController extends AppBaseController
         if($from!=null && $to!=null){
             
             $turnos = Turno::whereBetween('date', [$from, $to])->where('status_turno_id',$stid)->get();
+            if($resid!=null)
+                $turnos = Turno::whereBetween('date', [$from, $to])->where('status_turno_id',$stid)->where('resource_id', $resid)->get();
         }
          foreach ($turnos as $key => $turno) {
             $session = Session::find($turno['session_id']);
