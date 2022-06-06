@@ -103,4 +103,6 @@ AND status_turno_id = 3
 
 /Users/developer/flutter/bin/flutter build appbundle   
 
+php artisan infyom:scaffold User --fieldsFile=C:\xampp\htdocs\blogging\resources\model_schemas\User.json --skip=migration,model
+php artisan infyom:api_scaffold Post --fieldsFile=C:\xampp\htdocs\blogging\resources\model_schemas\Post.json 
 
