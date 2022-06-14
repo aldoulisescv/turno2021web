@@ -30,8 +30,14 @@ class ProspectAPIController extends AppBaseController
     public function saveImage(Request $request){
         try{
             if(!isset($request->id)){
-                $statement = DB::select("SHOW TABLE STATUS LIKE '".$request->name."s'");
-                $nextId = $statement[0]->Auto_increment;
+                $id = DB::table('INFORMATION_SCHEMA.TABLES')
+                    ->select('AUTO_INCREMENT as id')
+                    ->where('TABLE_NAME',$request->name.'s')
+                    ->get();
+            //  dd($id[0]->id);
+            //     $statement = DB::select("SHOW TABLE STATUS LIKE '".$request->name."s'");
+            //     $nextId = $statement[0]->Auto_increment;
+                $nextId = $id[0]->id;
             }else{
                 $nextId = $request->id;
             }
