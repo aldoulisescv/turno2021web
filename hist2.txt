@@ -106,3 +106,49 @@ AND status_turno_id = 3
 php artisan infyom:scaffold User --fieldsFile=C:\xampp\htdocs\blogging\resources\model_schemas\User.json --skip=migration,model
 php artisan infyom:api_scaffold Post --fieldsFile=C:\xampp\htdocs\blogging\resources\model_schemas\Post.json 
 
+
+PS C:\xampp\htdocs\turno2021web> heroku create
+  Creating app... done, ⬢ stormy-chamber-26610
+  https://stormy-chamber-26610.herokuapp.com/ | https://git.heroku.com/stormy-chamber-26610.git
+PS C:\xampp\htdocs\turno2021web> git remote
+  heroku
+  origin
+PS C:\xampp\htdocs\turno2021web> git add .
+PS C:\xampp\htdocs\turno2021web> git commit -m "to heroku"
+[master 0eed106] to heroku
+ 4 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 .rnd
+ create mode 100644 Procfile
+PS C:\xampp\htdocs\turno2021web> git push heroku master
+heroku config:add APP_NAME=Turno
+heroku config:add APP_ENV=Production
+heroku config:add APP_KEY=base64:ZTKVgW0yCErkkk7Bmp1EQP+vAqy5Qv+regB8wF9i63E=
+heroku config:add APP_DEBUG=true
+heroku config:add APP_URL=https://stormy-chamber-26610.herokuapp.com/
+
+//add database postgresql
+PS C:\xampp\htdocs\turno2021web> heroku addons:create heroku-postgresql:hobby-dev
+Creating heroku-postgresql:hobby-dev on ⬢ stormy-chamber-26610... free
+Database has been created and is available
+ ! This database is empty. If upgrading, you can transfer
+ ! data from another database with pg:copy
+Created postgresql-corrugated-52561 as DATABASE_URL
+Use heroku addons:docs heroku-postgresql to view documentation
+PS C:\xampp\htdocs\turno2021web> heroku pg:credentials:url
+Connection information for default credential.
+Connection info string:
+   "dbname=de54pf35hguman host=ec2-52-73-184-24.compute-1.amazonaws.com port=5432 user=dqaedcvfakchsd password=28861baf8cb7df7b9a99c67a04655d7cd4c6b16ddc599a0b83392ba4a0784120 sslmode=require"
+Connection URL:
+   postgres://dqaedcvfakchsd:28861baf8cb7df7b9a99c67a04655d7cd4c6b16ddc599a0b83392ba4a0784120@ec2-52-73-184-24.compute-1.amazonaws.com:5432/de54pf35hguman
+
+heroku config:add DB_CONNECTION=pgsql
+heroku config:add DB_HOST=ec2-52-73-184-24.compute-1.amazonaws.com
+heroku config:add DB_PORT=5432
+heroku config:add DB_DATABASE=de54pf35hguman
+heroku config:add DB_USERNAME=dqaedcvfakchsd
+heroku config:add DB_PASSWORD=28861baf8cb7df7b9a99c67a04655d7cd4c6b16ddc599a0b83392ba4a0784120
+
+
+//Import SQL
+mysqldump -u username -p --compatible=postgresql databasename > outputfile.sql
+ heroku pg:psql -a stormy-chamber-26610 -f .\back.sql

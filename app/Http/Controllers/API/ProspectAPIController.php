@@ -27,7 +27,29 @@ class ProspectAPIController extends AppBaseController
     {
         $this->prospectRepository = $prospectRepo;
     }
-
+    public function saveImage(Request $request){
+        try{
+            if(!isset($request->id)){
+                $statement = DB::select("SHOW TABLE STATUS LIKE '".$request->name."s'");
+                $nextId = $statement[0]->Auto_increment;
+            }else{
+                $nextId = $request->id;
+            }
+            $image = $request->file('image');
+            $disk = \Storage::disk('gcs');
+            $disk->putFileAs( $request->name."s", $image,  $request->name.'_' . $nextId.'.png');
+            
+            $url = $disk->url( $request->name.'_' . $nextId.'.png');
+            return $this->sendResponse(
+                $url,
+                'success', '200'
+            );
+        } catch(\Exception $e) {
+            return $this->sendError(
+                $e->getMessage(), 200
+            );
+        }
+    }
     public function uploadImage(Request $request) 
 	{
          try {

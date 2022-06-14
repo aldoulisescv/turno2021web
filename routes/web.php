@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendPassMail;
+
+
+// $disk = \Storage::disk('gcs');
+// $disk->put('holas.txt', 'hi');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -18,6 +18,7 @@ Route::post('/login', 'AuthController@login');
 
 Route::get('/logout', 'AuthController@logout');
 Route::post('/register', 'AuthController@register');
+Route::post('/upload', 'ProspectAPIController@saveImage');
 Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
