@@ -29,27 +29,36 @@ class ProspectAPIController extends AppBaseController
     }
     public function saveImage(Request $request){
         try{
-            if(!isset($request->id)){
-                $id = DB::table('INFORMATION_SCHEMA.TABLES')
-                    ->select('AUTO_INCREMENT as id')
-                    ->where('TABLE_NAME',$request->name.'s')
-                    ->get();
-            //  dd($id[0]->id);
-            //     $statement = DB::select("SHOW TABLE STATUS LIKE '".$request->name."s'");
-            //     $nextId = $statement[0]->Auto_increment;
-                $nextId = $id[0]->id;
-            }else{
-                $nextId = $request->id;
-            }
-            $image = $request->file('image');
-            $disk = \Storage::disk('gcs');
-            $disk->putFileAs( $request->name."s", $image,  $request->name.'_' . $nextId.'.png');
-            
-            $url = $disk->url( $request->name.'_' . $nextId.'.png');
-            return $this->sendResponse(
-                $url,
-                'success', '200'
-            );
+            $rules = array(
+                'file' => 'mimes:jpeg,jpg,png|required|max:10000', // max 10000kb
+                'id' => 'required',
+                'path' => 'required'
+              );
+              $fileArray = $request->input();
+              $image = $request->file('file');
+              $fileArray['file'] = $image; 
+              // Now pass the input and rules into the validator
+              $validator = Validator::make($fileArray, $rules);
+          
+              // Check to see if validation fails or passes
+              if ($validator->fails()) {
+                    // Redirect or return json to frontend with a helpful message to inform the user 
+                    // that the provided file was not an adequate type
+                    return $this->sendError(
+                        $validator->errors()->getMessages(), 400
+                    );
+              } else{
+                    $nextId = $request->id;
+                    $disk = \Storage::disk('gcs');
+                    $disk->putFileAs( $request->path."s", $image,  $request->path.'_' . $nextId.'.png');
+                    
+                    $url = $disk->url( $request->path."s/" . $request->path.'_' . $nextId.'.png');
+                    return $this->sendResponse(
+                        $url,
+                        'success', '200'
+                    );
+              };
+           
         } catch(\Exception $e) {
             return $this->sendError(
                 $e->getMessage(), 200
@@ -127,17 +136,41 @@ class ProspectAPIController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateProspectAPIRequest $request)
+    public function store(Request  $request)
     {
         $input = $request->all();
-        $statement = DB::select("SHOW TABLE STATUS LIKE 'prospects'");
-        $nextId = $statement[0]->Auto_increment;
-        $input['image']='prospects/prospect_'.$nextId.'.png';
-        $prospect = $this->prospectRepository->create($input);
+        $input['image']='';
+        $id=(key_exists('id', $input))?$input['id']:0;
+        $rules = [
+            'name' => "required|unique:prospects,id, {$id}",
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ];
+        
+        $validator = Validator::make($input , $rules);
+        if ($validator->fails()) {
+            return $this->sendError(
+               implode( ' ', $validator->messages()->all()), 400
+            );
+        }
+        if($id==0){
+            $prospect = $this->prospectRepository->create($input);
+            $id = $prospect->id;
+        }else{
+            $prospect = $this->prospectRepository->update($input, $id);
+        }
+        $request->request->add(['id' => $id]);
+        $responseImage = $this->saveImage($request);
+         $responseImage = $responseImage->original;
+        if($responseImage['success']){
+            $input['image'] = $responseImage['data'];
+            $prospect = $this->prospectRepository->update($input, $id);
+        }
         return $this->sendResponse(
             new ProspectResource($prospect),
             __('messages.saved', ['model' => __('models/prospects.singular')])
         );
+  
     }
 
     /**
@@ -186,8 +219,7 @@ class ProspectAPIController extends AppBaseController
                 __('messages.not_found', ['model' => __('models/prospects.singular')])
             );
         }
-
-        $input['image']='prospects/prospect_'.$id.'.png';
+        
         $prospect = $this->prospectRepository->update($input, $id);
 
         return $this->sendResponse(
@@ -208,6 +240,8 @@ class ProspectAPIController extends AppBaseController
      */
     public function destroy($id)
     {
+        //eliminar la imagen del disk
+
         /** @var Prospect $prospect */
         $prospect = $this->prospectRepository->find($id);
 
@@ -216,7 +250,8 @@ class ProspectAPIController extends AppBaseController
                 __('messages.not_found', ['model' => __('models/prospects.singular')])
             );
         }
-
+        
+        \Storage::disk('gcs')->delete( 'prospects/prospect_' . $id.'.png');
         $prospect->delete();
 
         return $this->sendResponse(

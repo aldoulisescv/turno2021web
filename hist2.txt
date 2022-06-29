@@ -152,3 +152,7 @@ heroku config:add DB_PASSWORD=28861baf8cb7df7b9a99c67a04655d7cd4c6b16ddc599a0b83
 //Import SQL
 mysqldump -u username -p --compatible=postgresql databasename > outputfile.sql
  heroku pg:psql -a stormy-chamber-26610 -f .\back.sql
+
+heroku config:add GOOGLE_CLOUD_PROJECT_ID=turno-1554146989867
+heroku config:add GOOGLE_CLOUD_KEY_FILE=/app/credentials-gcs.json
+heroku config:add GOOGLE_CLOUD_STORAGE_BUCKET=turno-bucket

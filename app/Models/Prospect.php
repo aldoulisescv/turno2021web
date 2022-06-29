@@ -51,7 +51,7 @@ class Prospect extends Model
         'sent_fb',
         'instagram',
         'sent_ig',
-        'notes'
+        'notes',
     ];
 
     /**

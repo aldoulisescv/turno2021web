@@ -101,9 +101,7 @@ class AuthController extends  AppBaseController
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
         $estab = Establishment::find($user['establishment_id']);
-        if($estab!=null){
-            $user['interval']=$estab->stepping;
-        } 
+        $user['interval']=($estab!=null)?$estab->stepping:5;
         $user['access_token']  = $accessToken;
         return response(['success'=>true,'data' => $user]);
 
@@ -117,7 +115,6 @@ class AuthController extends  AppBaseController
     }
     public function outwelcome($message)
     {        
-        dd($message);
         if (Auth::check()) {
             Auth::user()->AauthAcessToken()->delete();
         }

@@ -47,7 +47,7 @@ Route::middleware(['auth:api'])->group(function(){
 
     Route::resource('blocked_dates', BlockedDatesAPIController::class);
     Route::resource('prospects', ProspectAPIController::class);
-    Route::get('/prospectos','ProspectAPIController@prospects');
+    
     Route::get('/home/{establishment}', 'CallController@home'); 
     Route::get('/viewchange/{establishment}', 'CallController@viewchange');
 });
