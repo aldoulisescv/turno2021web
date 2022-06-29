@@ -142,7 +142,7 @@ class ProspectAPIController extends AppBaseController
         $input['image']='';
         $id=(key_exists('id', $input))?$input['id']:0;
         $rules = [
-            'name' => "required|unique:prospects,id, {$id}",
+            'name' => "required|unique:prospects, {$id}",
             'latitude' => 'required',
             'longitude' => 'required',
         ];
