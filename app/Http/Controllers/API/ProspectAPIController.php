@@ -141,11 +141,18 @@ class ProspectAPIController extends AppBaseController
         $input = $request->all();
         $input['image']='';
         $id=(key_exists('id', $input))?$input['id']:0;
-        $rules = [
-            'name' => "required|unique:prospects, {$id}",
-            'latitude' => 'required',
-            'longitude' => 'required',
-        ];
+        if($id==0)
+            $rules = [
+                'name' => "required|unique:prospects",
+                'latitude' => 'required',
+                'longitude' => 'required',
+            ];
+        else
+            $rules = [
+                'name' => "required|unique:prospects,id,{$id}",
+                'latitude' => 'required',
+                'longitude' => 'required',
+            ];
         
         $validator = Validator::make($input , $rules);
         if ($validator->fails()) {
