@@ -14,11 +14,17 @@ RUN apt-get update \
 # Instala Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# # Copia el código de Laravel al contenedor
-COPY ./ /var/www/html
+# Configura Apache
+RUN a2enmod rewrite
+
+#Remplaza la ruta de html con la de public en el archivo default conf de apache 
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
 # Establece el directorio de trabajo
 WORKDIR /var/www/html
+
+# Copia el código de Laravel al contenedor
+COPY ./ /var/www/html
 
 # Instala extensiones de PHP
 RUN docker-php-ext-install pdo pdo_mysql
