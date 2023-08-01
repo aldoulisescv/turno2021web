@@ -158,4 +158,3 @@ heroku config:add GOOGLE_CLOUD_KEY_FILE=/app/credentials-gcs.json
 heroku config:add GOOGLE_CLOUD_STORAGE_BUCKET=turno-bucket
 
 
-Esta es una prueba con una nueva rama
