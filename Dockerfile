@@ -35,6 +35,9 @@ RUN composer install --no-scripts
 # Ejecuta composer update para actualizar dependencias
 RUN composer update
 
+#Cambia los permisos de la caprte de logs
+RUN chmod -R 777 /var/www/html/storage/logs
+
 # Establece el directorio raíz de documentos para Apache
 ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 ENV APACHE_LOG_DIR /var/log/apache2
@@ -42,3 +45,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 
 # Habilita el módulo de reescritura de Apache
 RUN a2enmod rewrite
+
+#php artisan migrate
+#php artisan db:seed
+#php artisan passpor:install

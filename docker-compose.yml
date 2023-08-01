@@ -4,7 +4,7 @@ services:
     turno_web:
         image: turno-back
         ports:
-            - '8002:80'
+            - '${APP_PORT:-80}:80'
         volumes:
             - '.:/var/www/html'
         networks:

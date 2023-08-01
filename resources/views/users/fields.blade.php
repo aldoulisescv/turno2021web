@@ -118,4 +118,4 @@
     <a href="{!! route('users.index') !!}" class="btn btn-default">Cancel</a>
 </div>
 
-<? var_dump($user) ?>
+<? //var_dump($user) ?>
