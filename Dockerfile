@@ -46,6 +46,9 @@ ENV APACHE_LOG_DIR /var/log/apache2
 # Habilita el módulo de reescritura de Apache
 RUN a2enmod rewrite
 
+#php artisan passport:install
 #php artisan migrate
 #php artisan db:seed
-#php artisan passpor:install
+#php artisan key:generate
+#php artisan passport:install
+#php artisan storage:link

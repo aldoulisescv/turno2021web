@@ -29,7 +29,7 @@ class SessionSeeder extends Seeder
             'standby_time'=>'00:15',
             'time_btwn_session'=>'00:00',
             'end_date'=>null,
-            'color' =>'#FF33EC',
+            'color' =>'VERDE',
         ]);
         Session::create([
             'enabled' => 1,
@@ -46,7 +46,7 @@ class SessionSeeder extends Seeder
             'standby_time'=>'00:00',
             'time_btwn_session'=>'00:00',
             'end_date'=>null,
-            'color' =>'#4133FF',
+            'color' =>'ROJO',
         ]);
         Session::create([
             'enabled' => 1,
@@ -63,7 +63,7 @@ class SessionSeeder extends Seeder
             'standby_time'=>'00:15',
             'time_btwn_session'=>'00:15',
             'end_date'=>null,
-            'color' =>'#027802',
+            'color' =>'GRISOSCURO', 
         ]);
     }
 }
