@@ -51,4 +51,3 @@ RUN a2enmod rewrite
 #php artisan db:seed
 #php artisan key:generate
 #php artisan passport:install
-#php artisan storage:link
