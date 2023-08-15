@@ -48,6 +48,3 @@ RUN a2enmod rewrite
 
 #php artisan passport:install
 #php artisan migrate
-#php artisan db:seed
-#php artisan key:generate
-#php artisan passport:install
