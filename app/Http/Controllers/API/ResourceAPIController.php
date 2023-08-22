@@ -131,10 +131,17 @@ class ResourceAPIController extends AppBaseController
      *
      * @return Response
      */
+
+    //Aquí voy a meter mano***************************************************************
     public function update($id, UpdateResourceAPIRequest $request)
     {
         $input = $request->all();
 
+        dd($request);
+
+        //Borrar cuando aparezca un error***********************************************
+        //var_dump($input); exit();
+        //dd($input);
         /** @var Resource $resource */
         $resource = $this->resourceRepository->find($id);
 

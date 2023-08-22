@@ -55,7 +55,7 @@ class ResourceController extends AppBaseController
     public function store(CreateResourceRequest $request)
     {
         $input = $request->all();
-
+        
         $resource = $this->resourceRepository->create($input);
 
         Flash::success('Resource saved successfully.');
@@ -113,6 +113,31 @@ class ResourceController extends AppBaseController
      */
     public function update($id, UpdateResourceRequest $request)
     {
+        //Aquí invertí el nombre *********************************************************************************
+        $datos = $request->toArray();
+
+        if (isset($datos["name"])) {
+            $nombreOriginal = $datos["name"];
+
+            // Dividir la cadena en palabras utilizando expresiones regulares
+            $palabras = explode(" ", $nombreOriginal);
+            $nombreInvertido = implode(' ', array_reverse($palabras));
+            if (count($palabras) == 1) {
+                $nombreInvertido = "";
+                // Recorre la cadena de caracteres al revés
+                for ($i = mb_strlen($nombreOriginal, 'UTF-8') - 1; $i >= 0; $i--) {
+                    $nombreInvertido .= mb_substr($nombreOriginal, $i, 1, 'UTF-8');
+                }
+            }
+
+            $datos["name"] = $nombreInvertido;
+
+            // Actualiza los datos en el objeto $request
+            $request->replace($datos);
+        }
+        //**********************************************************************************************************
+        //dd($request->toArray());
+
         $resource = $this->resourceRepository->find($id);
 
         if (empty($resource)) {

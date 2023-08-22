@@ -113,6 +113,7 @@ class EstablishmentController extends AppBaseController
      */
     public function update($id, UpdateEstablishmentRequest $request)
     {
+        //dd($request->toArray());
         $establishment = $this->establishmentRepository->find($id);
 
         if (empty($establishment)) {

@@ -100,7 +100,7 @@ class EstablishmentAPIController extends AppBaseController
     public function update($id, UpdateEstablishmentAPIRequest $request)
     {
         $input = $request->all();
-        // dd($input);
+        dd($id);
         /** @var Establishment $establishment */
         $establishment = $this->establishmentRepository->find($id);
 
@@ -110,7 +110,7 @@ class EstablishmentAPIController extends AppBaseController
 
         $establishment = $this->establishmentRepository->update($input, $id);
 
-        return $this->sendResponse(new EstablishmentResource($establishment), 'Establishment updated successfully');
+        return $this->sendResponse(new EstablishmentResource($establishment), 'Establishment updated successfully 7');
     }
 
     /**
