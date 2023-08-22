@@ -113,7 +113,7 @@ class ResourceController extends AppBaseController
      */
     public function update($id, UpdateResourceRequest $request)
     {
-        //Aquí invertí el nombre *********************************************************************************
+        //Aquí invertí el nombre
         $datos = $request->toArray();
 
         if (isset($datos["name"])) {
@@ -135,7 +135,7 @@ class ResourceController extends AppBaseController
             // Actualiza los datos en el objeto $request
             $request->replace($datos);
         }
-        //**********************************************************************************************************
+        
         //dd($request->toArray());
         $resource = $this->resourceRepository->find($id);
 

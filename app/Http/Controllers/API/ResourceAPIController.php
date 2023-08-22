@@ -161,11 +161,6 @@ class ResourceAPIController extends AppBaseController
            $model = RelationResourceSession::where('resource_id',$resource_id)->where('session_id',$value)->delete();
         }
 
-
-
-
-
-
         $salida['guardar']=$guardar;
         $salida['eliminar']=$eliminar;
         $salida['existentes']=$existentes;
