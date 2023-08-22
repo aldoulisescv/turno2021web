@@ -154,11 +154,17 @@ class ResourceAPIController extends AppBaseController
                 'resource_id' => $resource_id,
                 'session_id' => $value
             ]);
+            
             $model->save();
         }
         foreach ($eliminar as $key => $value) {
            $model = RelationResourceSession::where('resource_id',$resource_id)->where('session_id',$value)->delete();
         }
+
+
+
+
+
 
         $salida['guardar']=$guardar;
         $salida['eliminar']=$eliminar;
